@@ -2,379 +2,320 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LARP.PARIS — Immersive Theatre Laboratory</title>
-    <meta name="description"
-        content="Theatre without a stage. A story without a script. Larp.Paris creates live immersive experiences where imagination is the only material.">
-    <link rel="stylesheet" href="https://use.typekit.net/dry2ghs.css">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LARP.PARIS — Immersive Theatre Laboratory</title>
+  <meta name="description" content="Theatre without a stage. A story without a script. Larp.Paris creates live immersive experiences where imagination is the only material.">
+  <link rel="stylesheet" href="https://use.typekit.net/dry2ghs.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <!-- ═══════════════════════════════════════ HEADER ═══════════════════════════════════════ -->
-    <header id="site-header">
-        <a href="#hero" class="header-logo">
-            <img src="assets/logo.png" alt="LARP.PARIS" id="header-logo-img">
-        </a>
-        <nav id="main-nav">
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#performances">Performances</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <button id="nav-toggle" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-        </button>
-    </header>
+  <!-- ══════════════════════════════ HEADER ══════════════════════════════ -->
+  <header id="site-header">
+    <a href="#hero" class="header-logo">
+      <img src="assets/logo.png" alt="LARP.PARIS" id="header-logo-img">
+    </a>
+    <nav id="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#performances">Performances</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
+  </header>
 
-    <!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
-    <section id="hero">
-        <div class="hero-inner">
-            <img src="assets/logo.png" alt="LARP.PARIS" class="hero-logo">
-        </div>
-        <div class="scroll-indicator">
-            <span>&#8595;</span>
-        </div>
-    </section>
+  <!-- ══════════════════════════════ HERO ════════════════════════════════ -->
+  <section id="hero">
+    <img src="assets/logo.png" alt="LARP.PARIS" class="hero-logo">
+    <p class="hero-tagline">Theatre without a stage. A story without a script.</p>
+    <div class="scroll-cue" aria-hidden="true">Scroll</div>
+  </section>
 
-    <!-- ═══════════════════════════════════════ ABOUT ═══════════════════════════════════════ -->
-    <section id="about">
-        <div class="container">
-            <p class="section-label reveal">About</p>
-            <div class="section-content reveal">
-                <p class="manifesto">Larp.Paris creates live experiences where imagination is the only material. No
-                    actors. No audience. Just people — and the question of what happens when you hand them the story.
-                </p>
-                <p class="body-text">We've worked across Moscow, Paris, and Tel Aviv. Our work has been recognized at
-                    major cultural festivals and supported by the European Commission's S+T+ARTS program.</p>
-                <p class="body-accent">Come as you are. Leave as someone who was here.</p>
+  <!-- ══════════════════════════════ ABOUT ═══════════════════════════════ -->
+  <section id="about">
+    <div class="container">
+      <span class="section-label reveal">About</span>
+      <p class="about-manifesto reveal">Larp.Paris creates live experiences where imagination is the only material. No actors. No audience. Just people — and the question of what happens when you hand them the story.</p>
+      <p class="about-body reveal">We've worked across Moscow, Paris, and Tel Aviv. Our work has been recognized at major cultural festivals and supported by the European Commission's S+T+ARTS program.</p>
+      <p class="about-accent reveal">Come as you are. Leave as someone who was here.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ PERFORMANCES ════════════════════════════ -->
+  <section id="performances">
+    <div class="container">
+      <span class="section-label reveal">Performances</span>
+
+      <!-- ENCIRCLING -->
+      <article class="show-block reveal">
+        <div class="show-mosaic">
+          <div class="mosaic-hero">
+            <img src="assets/shows/encircling/01.png" alt="Encircling — performance" loading="lazy">
+          </div>
+          <div class="mosaic-row">
+            <div class="mosaic-sm">
+              <img src="assets/shows/encircling/02.png" alt="Encircling — scene" loading="lazy">
             </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════ PERFORMANCES ═══════════════════════════════════════ -->
-    <section id="performances">
-        <div class="container">
-            <p class="section-label reveal">Performances</p>
-
-            <!-- ENCIRCLING -->
-            <article class="show-block" id="show-encircling">
-                <div class="show-gallery reveal" data-autoscroll>
-                    <div class="gallery-track">
-                        <div class="gallery-slide"><img src="assets/shows/encircling/03.png"
-                                alt="Encircling — participants" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/encircling/01.png"
-                                alt="Encircling — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/encircling/02.png"
-                                alt="Encircling — immersive scene" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/encircling/04.png"
-                                alt="Encircling — atmosphere" loading="lazy"></div>
-                    </div>
-                    <h3 class="show-title-overlay">Encircling</h3>
-                </div>
-                <div class="show-body reveal">
-                    <p class="show-desc">You wake up. You remember nothing. The people around you say they know who you
-                        are. Do you believe them? ENCIRCLING places participants inside a single, disorienting premise:
-                        total memory loss. You build a character from the fragments others offer you — and slowly
-                        discover the gap between who you think you are and who the world has decided you to be. No
-                        script. No actors. No safe distance.</p>
-                    <p class="show-credit">Recognized as one of the best theatrical performances without actors in
-                        Russia by Afisha magazine. Performed in Moscow, Saint Petersburg, and Paris.</p>
-                </div>
-            </article>
-
-            <!-- QUALIA -->
-            <article class="show-block" id="show-qualia">
-                <div class="show-gallery qualia-gallery reveal" data-autoscroll>
-                    <div class="gallery-track">
-                        <div class="gallery-slide"><img src="assets/shows/qualia/01.png" alt="Qualia — blue light"
-                                loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/qualia/02.png" alt="Qualia — interaction"
-                                loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/qualia/03.jpeg" alt="Qualia — sensory moment"
-                                loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/qualia/04.jpeg"
-                                alt="Qualia — color experiment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/qualia/05.png" alt="Qualia — immersion"
-                                loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/qualia/06.png" alt="Qualia — color palette"
-                                loading="lazy"></div>
-                    </div>
-                    <h3 class="show-title-overlay">Qualia</h3>
-                </div>
-                <div class="show-body reveal">
-                    <p class="show-desc">How do you describe yellow to someone who has never seen it? QUALIA begins with
-                        a philosopher's thought experiment and ends somewhere harder to name. A black-and-white room. A
-                        voice called Mary who guides you through tasks involving color, sound, language, and touch. At
-                        the end, Mary tells you what she is. The question she leaves behind is whether that changes
-                        anything.</p>
-                    <p class="show-credit">Created at La Générale Paris. Premiered at the Tel Aviv International Theatre
-                        Festival, representing France.</p>
-                </div>
-            </article>
-
-            <!-- FAILURE -->
-            <article class="show-block" id="show-failure">
-                <div class="show-gallery reveal" data-autoscroll>
-                    <div class="gallery-track">
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07560b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07571b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07576b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07586b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07602b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07618b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07621b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07624b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07625b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07630b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07667b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07683b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07685b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07689b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07711b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                        <div class="gallery-slide"><img src="assets/shows/failure/DSC07722b.jpg"
-                                alt="Failure — performance moment" loading="lazy"></div>
-                    </div>
-                    <h3 class="show-title-overlay">Failure</h3>
-                </div>
-                <div class="show-body reveal">
-                    <p class="show-desc">An old house in Belleville. A woman who collected stories of failure from
-                        strangers passing through. The belief that naming what went wrong might be the first step toward
-                        something else. You step inside. You invent a character. You move through image and word,
-                        exploring what failure has made you — and what it might yet make possible. Not therapy. Not
-                        confession. Something quieter — and stranger.</p>
-                    <p class="show-credit">Premiered at Théâtre Les Enfants Terribles, Paris, June 2019.</p>
-                </div>
-            </article>
-
-            <!-- INBOX -->
-            <article class="show-block" id="show-inbox">
-                <div class="show-gallery show-gallery--empty reveal">
-                    <div class="gallery-placeholder">
-                        <span>Photos coming soon</span>
-                    </div>
-                    <h3 class="show-title-overlay">Inbox</h3>
-                </div>
-                <div class="show-body reveal">
-                    <p class="show-desc">Every message carries more than it says. Every collaboration hides more than it
-                        shows. INBOX is a playable exploration of how we communicate — and misunderstand — within small
-                        groups. Participants decode, align, and navigate the friction between individual intention and
-                        collective outcome. The rules are simple. The dynamics are not.</p>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════ TEAM ═══════════════════════════════════════ -->
-    <section id="team">
-        <div class="container">
-            <p class="section-label reveal">Team</p>
-            <div class="team-grid">
-
-                <div class="team-card reveal">
-                    <div class="team-photo">
-                        <img src="assets/team/sasha.png" alt="Sasha Ovechkin" loading="lazy">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Sasha Ovechkin</h3>
-                        <p class="team-role">Co-Founder | Experience Design, Production & Management</p>
-                        <p class="team-bio">Sasha believes the most honest thing a performance can do is remove itself —
-                            no stage, no actors, no frame to hide behind. What's left is just people, and what people do
-                            when no one tells them what to do next.</p>
-                    </div>
-                </div>
-
-                <div class="team-card reveal">
-                    <div class="team-photo">
-                        <img src="assets/team/lisa.png" alt="Lisa Kelesidou" loading="lazy">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Lisa Kelesidou</h3>
-                        <p class="team-role">Co-Founder | Artistic Coordination, Facilitation & Operations</p>
-                        <p class="team-bio">Lisa is interested in the moment just before trust. The hesitation. The
-                            calculation. And what makes people decide, despite everything, to step forward anyway.</p>
-                    </div>
-                </div>
-
-                <div class="team-card reveal">
-                    <div class="team-photo">
-                        <img src="assets/team/sonya.png" alt="Sonya Tsytkina" loading="lazy">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Sonya Tsytkina</h3>
-                        <p class="team-role">Experience Design & Art Direction</p>
-                        <p class="team-bio">Sonya thinks image precedes language. That what we see shapes what we're
-                            able to say — and that most of what matters happens in the gap between the two.</p>
-                    </div>
-                </div>
-
-                <div class="team-card reveal">
-                    <div class="team-photo">
-                        <img src="assets/team/kirill.png" alt="Kirill Tsytkin" loading="lazy">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Kirill Tsytkin</h3>
-                        <p class="team-role">Systems, Narrative & Technology</p>
-                        <p class="team-bio">Kirill fights entropy. He takes chaos — raw sound, scattered data, loose
-                            ideas — and wraps it into systems, words, images that hold. He believes meaning isn't found.
-                            It's built.</p>
-                    </div>
-                </div>
-
+            <div class="mosaic-sm">
+              <img src="assets/shows/encircling/03.png" alt="Encircling — moment" loading="lazy">
             </div>
+          </div>
         </div>
-    </section>
+        <h2 class="show-title">Encircling</h2>
+        <p class="show-desc">You wake up. You remember nothing. The people around you say they know who you are. Do you believe them? ENCIRCLING places participants inside a single, disorienting premise: total memory loss. You build a character from the fragments others offer you — and slowly discover the gap between who you think you are and who the world has decided you to be. No script. No actors. No safe distance.</p>
+        <p class="show-credit">Recognized as one of the best theatrical performances without actors in Russia by Afisha magazine. Performed in Moscow, Saint Petersburg, and Paris.</p>
+      </article>
 
-    <!-- ═══════════════════════════════════════ EDUCATION ═══════════════════════════════════════ -->
-    <section id="education">
-        <div class="container">
-            <p class="section-label reveal">Education</p>
-
-            <div class="edu-block reveal">
-                <h3 class="edu-title">For Organizations</h3>
-                <p class="edu-hook">The most useful thing a team can do together is not a workshop. It's an experience
-                    that makes the workshop unnecessary.</p>
-                <p class="body-text">Larp.Paris designs LARP-based trainings built around real challenges: how groups
-                    make decisions, how failure gets processed, how people hear each other when the stakes feel real. We
-                    work with teams of 2 to 500, across formats ranging from a single afternoon to two full days.</p>
-                <p class="body-text">What stays the same: no passive participation. No PowerPoints. No one watching
-                    from the side.</p>
-                <ul class="edu-list">
-                    <li>Briefings, immersive play, and structured debrief</li>
-                    <li>2–4 professional coaches and game masters</li>
-                    <li>Theatrical set-ups at arts venues or locations of your choice</li>
-                    <li>Optional modules on in-team communication</li>
-                    <li>Professional photo documentation</li>
-                </ul>
+      <!-- QUALIA -->
+      <article class="show-block show-block--qualia reveal">
+        <div class="show-mosaic">
+          <div class="mosaic-hero">
+            <img src="assets/shows/qualia/01.png" alt="Qualia — blue light" loading="lazy">
+          </div>
+          <div class="mosaic-row">
+            <div class="mosaic-sm">
+              <img src="assets/shows/qualia/02.png" alt="Qualia — interaction" loading="lazy">
             </div>
-
-            <div class="edu-block reveal">
-                <h3 class="edu-title">For Schools & Institutions</h3>
-                <p class="body-text">We bring participatory theatre into classrooms — not as entertainment, but as
-                    method. Using gamification, interactive projections, and immersive storytelling, we teach complex
-                    topics through direct experience: circular economy, identity, social responsibility.</p>
-                <p class="body-text">Students don't receive information. They make it.</p>
-                <p class="edu-cta">Get in touch to design a program for your team or institution.</p>
+            <div class="mosaic-sm">
+              <img src="assets/shows/qualia/03.jpeg" alt="Qualia — color experiment" loading="lazy">
             </div>
+          </div>
         </div>
-    </section>
+        <h2 class="show-title">Qualia</h2>
+        <p class="show-desc">How do you describe yellow to someone who has never seen it? QUALIA begins with a philosopher's thought experiment and ends somewhere harder to name. A black-and-white room. A voice called Mary who guides you through tasks involving color, sound, language, and touch. At the end, Mary tells you what she is. The question she leaves behind is whether that changes anything.</p>
+        <p class="show-credit">Created at La Générale Paris. Premiered at the Tel Aviv International Theatre Festival, representing France.</p>
+      </article>
 
-    <!-- ═══════════════════════════════════════ FAQ ═══════════════════════════════════════ -->
-    <section id="faq">
-        <div class="container">
-            <p class="section-label reveal">FAQ</p>
-            <div class="faq-list reveal">
-
-                <div class="faq-item">
-                    <h3 class="faq-question">What is LARP?</h3>
-                    <div class="faq-answer">
-                        <p>LARP (Live Action Role Playing) is an immersive, participatory theatrical experience where
-                            the audience transforms into participants who co-create the story. There are no spectators,
-                            no actors — only you.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-question">Do I need experience or special skills?</h3>
-                    <div class="faq-answer">
-                        <p>No preparation or specific skills are required. You'll be guided through on-the-spot
-                            workshops that ease you into full participation.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-question">How long do experiences last?</h3>
-                    <div class="faq-answer">
-                        <p>Most experiences run 1.5 to 2 hours, with corporate trainings extending from 4 hours to 2
-                            days.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-question">How many people can participate?</h3>
-                    <div class="faq-answer">
-                        <p>Group sizes vary by experience. Corporate trainings can scale from 2 to 500 participants.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-question">What should I expect?</h3>
-                    <div class="faq-answer">
-                        <p>Expect immersive set-ups, gamification mechanics, guided facilitation, and technology that
-                            serves the story. You'll create a fictional character, interact with others, and discover
-                            unexpected truths through collective creativity.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-question">Can I take photos or videos?</h3>
-                    <div class="faq-answer">
-                        <p>Professional photo reports are provided by the organizers. Personal mobile phones and video
-                            recording are not permitted during the experience in order to preserve full immersion.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-question">What languages are experiences offered in?</h3>
-                    <div class="faq-answer">
-                        <p>Experiences are available in English and French.</p>
-                    </div>
-                </div>
-
+      <!-- FAILURE -->
+      <article class="show-block reveal">
+        <div class="show-mosaic">
+          <div class="mosaic-hero">
+            <img src="assets/shows/failure/DSC07560b.jpg" alt="Failure — performance" loading="lazy">
+          </div>
+          <div class="mosaic-row">
+            <div class="mosaic-sm">
+              <img src="assets/shows/failure/DSC07571b.jpg" alt="Failure — scene" loading="lazy">
             </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════ CONTACT ═══════════════════════════════════════ -->
-    <section id="contact">
-        <div class="container">
-            <p class="section-label reveal">Contact</p>
-            <div class="contact-content reveal">
-                <div class="contact-block">
-                    <p class="contact-name"><span class="weight-black">LARP</span>.PARIS</p>
-                    <p class="contact-address">53 rue Monge, 75005 Paris</p>
-                </div>
-                <div class="contact-links">
-                    <a href="mailto:larp.paris@gmail.com" class="contact-link"
-                        id="contact-email">larp.paris@gmail.com</a>
-                    <a href="tel:+33650518485" class="contact-link" id="contact-phone">+33 (0)6 50 51 84 85</a>
-                    <a href="https://www.instagram.com/larp.paris" target="_blank" rel="noopener" class="contact-link"
-                        id="contact-instagram">Instagram @larp.paris</a>
-                </div>
+            <div class="mosaic-sm">
+              <img src="assets/shows/failure/DSC07576b.jpg" alt="Failure — moment" loading="lazy">
             </div>
+          </div>
         </div>
-    </section>
+        <h2 class="show-title">Failure</h2>
+        <p class="show-desc">An old house in Belleville. A woman who collected stories of failure from strangers passing through. The belief that naming what went wrong might be the first step toward something else. You step inside. You invent a character. You move through image and word, exploring what failure has made you — and what it might yet make possible. Not therapy. Not confession. Something quieter — and stranger.</p>
+        <p class="show-credit">Premiered at Théâtre Les Enfants Terribles, Paris, June 2019.</p>
+      </article>
 
-    <!-- ═══════════════════════════════════════ FOOTER ═══════════════════════════════════════ -->
-    <footer id="site-footer">
-        <div class="container">
-            <p>&copy; 2026 LARP.PARIS</p>
+      <!-- INBOX -->
+      <article class="show-block reveal">
+        <div class="show-mosaic">
+          <div class="mosaic-placeholder">Photos coming soon</div>
         </div>
-    </footer>
+        <h2 class="show-title">Inbox</h2>
+        <p class="show-desc">Every message carries more than it says. Every collaboration hides more than it shows. INBOX is a playable exploration of how we communicate — and misunderstand — within small groups. Participants decode, align, and navigate the friction between individual intention and collective outcome. The rules are simple. The dynamics are not.</p>
+      </article>
 
-    <script src="script.js"></script>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════ TEAM ══════════════════════════════ -->
+  <section id="team">
+    <div class="container">
+      <span class="section-label reveal">Team</span>
+      <div class="team-grid">
+
+        <div class="team-card reveal">
+          <div class="team-photo">
+            <img src="assets/team/sasha.png" alt="Sasha Ovechkin" loading="lazy">
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Sasha Ovechkin</h3>
+            <p class="team-role">Co-Founder · Experience Design, Production & Management</p>
+            <p class="team-bio">Sasha believes the most honest thing a performance can do is remove itself — no stage, no actors, no frame to hide behind. What's left is just people, and what people do when no one tells them what to do next.</p>
+          </div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-photo">
+            <img src="assets/team/lisa.png" alt="Lisa Kelesidou" loading="lazy">
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Lisa Kelesidou</h3>
+            <p class="team-role">Co-Founder · Artistic Coordination, Facilitation & Operations</p>
+            <p class="team-bio">Lisa is interested in the moment just before trust. The hesitation. The calculation. And what makes people decide, despite everything, to step forward anyway.</p>
+          </div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-photo">
+            <img src="assets/team/sonya.png" alt="Sonya Tsytkina" loading="lazy">
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Sonya Tsytkina</h3>
+            <p class="team-role">Experience Design & Art Direction</p>
+            <p class="team-bio">Sonya thinks image precedes language. That what we see shapes what we're able to say — and that most of what matters happens in the gap between the two.</p>
+          </div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-photo">
+            <img src="assets/team/kirill.png" alt="Kirill Tsytkin" loading="lazy">
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Kirill Tsytkin</h3>
+            <p class="team-role">Systems, Narrative & Technology</p>
+            <p class="team-bio">Kirill fights entropy. He takes chaos — raw sound, scattered data, loose ideas — and wraps it into systems, words, images that hold. He believes meaning isn't found. It's built.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ EDUCATION ═══════════════════════════ -->
+  <section id="education">
+    <div class="container">
+      <span class="section-label reveal">Education</span>
+
+      <div class="edu-block reveal">
+        <h3 class="edu-title">For Organizations</h3>
+        <p class="edu-hook">The most useful thing a team can do together is not a workshop. It's an experience that makes the workshop unnecessary.</p>
+        <p class="edu-body">Larp.Paris designs LARP-based trainings built around real challenges: how groups make decisions, how failure gets processed, how people hear each other when the stakes feel real. We work with teams of 2 to 500, across formats ranging from a single afternoon to two full days.</p>
+        <p class="edu-body">What stays the same: no passive participation. No PowerPoints. No one watching from the side.</p>
+        <ul class="edu-list">
+          <li>Briefings, immersive play, and structured debrief</li>
+          <li>2–4 professional coaches and game masters</li>
+          <li>Theatrical set-ups at arts venues or locations of your choice</li>
+          <li>Optional modules on in-team communication</li>
+          <li>Professional photo documentation</li>
+        </ul>
+      </div>
+
+      <div class="edu-block reveal">
+        <h3 class="edu-title">For Schools & Institutions</h3>
+        <p class="edu-body">We bring participatory theatre into classrooms — not as entertainment, but as method. Using gamification, interactive projections, and immersive storytelling, we teach complex topics through direct experience: circular economy, identity, social responsibility.</p>
+        <p class="edu-body">Students don't receive information. They make it.</p>
+        <p class="edu-cta">Get in touch to design a program for your team or institution.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════ FAQ ═══════════════════════════════ -->
+  <section id="faq">
+    <div class="container">
+      <span class="section-label reveal">FAQ</span>
+      <div class="faq-list reveal">
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What is LARP?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>LARP (Live Action Role Playing) is an immersive, participatory theatrical experience where the audience transforms into participants who co-create the story. There are no spectators, no actors — only you.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Do I need experience or special skills?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>No preparation or specific skills are required. You'll be guided through on-the-spot workshops that ease you into full participation.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How long do experiences last?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>Most experiences run 1.5 to 2 hours, with corporate trainings extending from 4 hours to 2 days.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How many people can participate?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>Group sizes vary by experience. Corporate trainings can scale from 2 to 500 participants.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What should I expect?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>Expect immersive set-ups, gamification mechanics, guided facilitation, and technology that serves the story. You'll create a fictional character, interact with others, and discover unexpected truths through collective creativity.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Can I take photos or videos?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>Professional photo reports are provided by the organizers. Personal mobile phones and video recording are not permitted during the experience in order to preserve full immersion.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What languages are experiences offered in?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" role="region">
+            <p>Experiences are available in English and French.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ CONTACT ═════════════════════════════ -->
+  <section id="contact">
+    <div class="container">
+      <span class="section-label reveal">Contact</span>
+      <div class="contact-layout reveal">
+        <div>
+          <p class="contact-name"><strong>LARP</strong><span class="contact-name-thin">.PARIS</span></p>
+          <p class="contact-address">53 rue Monge, 75005 Paris</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:larp.paris@gmail.com" class="contact-link">larp.paris@gmail.com</a>
+          <a href="tel:+33650518485" class="contact-link">+33 (0)6 50 51 84 85</a>
+          <a href="https://www.instagram.com/larp.paris" target="_blank" rel="noopener" class="contact-link">Instagram @larp.paris</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+  <footer id="site-footer">
+    <div class="container">
+      <p>&copy; 2026 LARP.PARIS</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 
 </html>

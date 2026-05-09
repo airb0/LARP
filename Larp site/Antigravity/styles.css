@@ -1,11 +1,10 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   LARP.PARIS — Design System & Styles
-   Proxima Nova · Dark Monochrome · 0px radius · Architectural restraint
+   LARP.PARIS — Styles
+   Source of truth: LARP-paris-design.md
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ─── 1. DESIGN TOKENS ──────────────────────────────────────────────────── */
+/* ─── §1 COLOR TOKENS ───────────────────────────────────────────────────── */
 :root {
-  /* Colors */
   --bg:      #0c0c0c;
   --surface: #141414;
   --border:  rgba(255, 255, 255, 0.07);
@@ -14,10 +13,11 @@
   --text-3:  #484848;
   --white:   #ffffff;
   --black:   #000000;
+}
 
-  /* Typography */
-  --font: "proxima-nova", system-ui, -apple-system, sans-serif;
-
+/* ─── §2 TYPOGRAPHY TOKENS ──────────────────────────────────────────────── */
+:root {
+  --font:      "proxima-nova", system-ui, -apple-system, sans-serif;
   --t-label:   0.68rem;
   --t-sm:      0.875rem;
   --t-body:    1rem;
@@ -25,8 +25,10 @@
   --t-heading: clamp(1.4rem, 2.5vw, 2rem);
   --t-display: clamp(2.4rem, 5vw, 4rem);
   --t-hero:    clamp(3.5rem, 9vw, 8rem);
+}
 
-  /* Spacing (8px base) */
+/* ─── §3 SPACING TOKENS ─────────────────────────────────────────────────── */
+:root {
   --s-1:  4px;
   --s-2:  8px;
   --s-3:  16px;
@@ -38,18 +40,22 @@
   --s-9:  96px;
   --s-10: 128px;
   --s-11: 160px;
+}
 
-  /* Layout */
-  --section-y:    clamp(80px, 12vw, 160px);
+/* ─── §4 LAYOUT + §5 MOTION TOKENS ─────────────────────────────────────── */
+:root {
+  --section-y:     clamp(80px, 12vw, 160px);
   --container-max: 1200px;
   --container-pad: clamp(24px, 5vw, 80px);
 
-  /* Motion */
   --ease:     cubic-bezier(0.16, 1, 0.3, 1);
   --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ─── 2. RESET & BASE ───────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -72,20 +78,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* §2 rule: no italics anywhere */
 em, i { font-style: normal; }
 
-img {
-  display: block;
-  max-width: 100%;
-}
+img { display: block; max-width: 100%; }
 
-/* ─── 3. UTILITIES ──────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   UTILITIES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-pad);
 }
 
+/* §6.3 Section Label */
 .section-label {
   display: block;
   font-size: var(--t-label);
@@ -96,24 +104,26 @@ img {
   margin-bottom: clamp(40px, 6vw, 72px);
 }
 
-/* Scroll reveal */
+/* §5 Scroll reveal */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
 }
-
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Section dividers */
+/* §4 Section dividers */
 section + section {
   border-top: 1px solid var(--border);
 }
 
-/* ─── 4. HEADER ─────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 #site-header {
   position: fixed;
   top: 0;
@@ -129,29 +139,25 @@ section + section {
               backdrop-filter 0.4s var(--ease-std);
 }
 
+/* Compact state — §8 Header Behavior */
 #site-header.is-compact {
   background: rgba(12, 12, 12, 0.90);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 
-.header-logo {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
+.header-logo { display: flex; align-items: center; }
 
+/* Logo hidden until hero scrolls away — §8 */
 #header-logo-img {
   height: 38px;
   width: auto;
   opacity: 0;
   transition: opacity 1.2s var(--ease-std);
 }
+#header-logo-img.visible { opacity: 1; }
 
-#header-logo-img.visible {
-  opacity: 1;
-}
-
+/* §6.2 Nav Link */
 #main-nav ul {
   list-style: none;
   display: flex;
@@ -183,9 +189,7 @@ section + section {
   transition: transform 0.35s var(--ease);
 }
 
-#main-nav a:hover::after {
-  transform: scaleX(1);
-}
+#main-nav a:hover::after { transform: scaleX(1); }
 
 /* Hamburger */
 #nav-toggle {
@@ -210,12 +214,14 @@ section + section {
 #nav-toggle.active span:first-child {
   transform: rotate(45deg) translate(5px, 5px);
 }
-
 #nav-toggle.active span:last-child {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* ─── 5. HERO ────────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 #hero {
   min-height: 100vh;
   display: flex;
@@ -227,6 +233,7 @@ section + section {
   position: relative;
 }
 
+/* §5 Hero entrance animations */
 .hero-logo {
   width: clamp(160px, 26vw, 300px);
   opacity: 0;
@@ -279,14 +286,17 @@ section + section {
   to { transform: scaleY(1); }
 }
 
-/* ─── 6. ABOUT ───────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   ABOUT
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 #about {
   padding: var(--section-y) 0;
 }
 
 .about-manifesto {
   font-size: var(--t-display);
-  font-weight: 300;
+  font-weight: 300;          /* Light — editorial, per §2 weight vocabulary */
   line-height: 1.3;
   max-width: 900px;
   margin-bottom: var(--s-7);
@@ -295,6 +305,7 @@ section + section {
 
 .about-body {
   font-size: var(--t-body);
+  font-weight: 400;
   color: var(--text-2);
   max-width: 600px;
   line-height: 1.8;
@@ -309,7 +320,10 @@ section + section {
   margin-top: var(--s-4);
 }
 
-/* ─── 7. PERFORMANCES ────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   PERFORMANCES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 #performances {
   padding: var(--section-y) 0;
 }
@@ -317,17 +331,14 @@ section + section {
 .show-block {
   margin-bottom: clamp(96px, 14vw, 180px);
 }
+.show-block:last-child { margin-bottom: 0; }
 
-.show-block:last-child {
-  margin-bottom: 0;
-}
-
-/* Mosaic grid — full bleed */
+/* §6.4 Photo Mosaic — full bleed via negative margin */
 .show-mosaic {
   margin: 0 calc(-1 * var(--container-pad)) var(--s-6);
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 3px;              /* Fixed 3px — see §3 "Mosaic Gap" */
 }
 
 .mosaic-hero {
@@ -347,11 +358,7 @@ section + section {
   overflow: hidden;
 }
 
-.mosaic-row.three-col {
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-/* Images — always grayscale, only scale on hover */
+/* §7 Photography rules — B&W always, scale on hover only */
 .show-mosaic img {
   width: 100%;
   height: 100%;
@@ -362,20 +369,19 @@ section + section {
 
 .show-mosaic img:hover {
   transform: scale(1.04);
-  filter: grayscale(1) contrast(1.1);
+  filter: grayscale(1) contrast(1.1);  /* stays grayscale — §7 rule */
 }
 
-/* Qualia — intentional color exception */
+/* §7 Qualia exception — full color, no grayscale */
 .show-block--qualia .show-mosaic img {
   filter: contrast(1.05);
 }
-
 .show-block--qualia .show-mosaic img:hover {
   transform: scale(1.04);
   filter: contrast(1.1);
 }
 
-/* Placeholder for no-photo shows */
+/* Placeholder for shows without photos */
 .mosaic-placeholder {
   height: clamp(160px, 20vw, 240px);
   border: 1px solid var(--border);
@@ -391,7 +397,7 @@ section + section {
 .show-title {
   font-size: var(--t-display);
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   line-height: 1;
   color: var(--text-1);
@@ -400,6 +406,7 @@ section + section {
 
 .show-desc {
   font-size: var(--t-body);
+  font-weight: 400;
   color: var(--text-2);
   max-width: 640px;
   line-height: 1.8;
@@ -414,7 +421,10 @@ section + section {
   line-height: 1.7;
 }
 
-/* ─── 8. TEAM ────────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   TEAM
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 #team {
   padding: var(--section-y) 0;
 }
@@ -425,6 +435,7 @@ section + section {
   gap: clamp(40px, 6vw, 80px) clamp(32px, 5vw, 64px);
 }
 
+/* §6.5 Team Card — photo left, text right */
 .team-card {
   display: grid;
   grid-template-columns: 140px 1fr;
@@ -436,7 +447,6 @@ section + section {
   width: 140px;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  flex-shrink: 0;
 }
 
 .team-photo img {
@@ -444,20 +454,21 @@ section + section {
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  filter: grayscale(1) contrast(1.05);
+  filter: grayscale(1) contrast(1.05);   /* B&W always — §7 */
   transition: transform 0.7s var(--ease);
 }
 
 .team-card:hover .team-photo img {
   transform: scale(1.04);
+  /* filter unchanged — no color bleed on hover, per §10 "Don't" list */
 }
 
 .team-name {
   font-size: var(--t-heading);
   font-weight: 700;
   letter-spacing: 0.02em;
-  margin-bottom: var(--s-1);
   line-height: 1.2;
+  margin-bottom: var(--s-1);
 }
 
 .team-role {
@@ -466,17 +477,21 @@ section + section {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-3);
-  margin-bottom: var(--s-3);
   line-height: 1.6;
+  margin-bottom: var(--s-3);
 }
 
 .team-bio {
   font-size: var(--t-sm);
+  font-weight: 400;
   color: var(--text-2);
   line-height: 1.8;
 }
 
-/* ─── 9. EDUCATION ───────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   EDUCATION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 #education {
   padding: var(--section-y) 0;
 }
@@ -485,17 +500,14 @@ section + section {
   max-width: 720px;
   margin-bottom: clamp(60px, 8vw, 100px);
 }
-
-.edu-block:last-child {
-  margin-bottom: 0;
-}
+.edu-block:last-child { margin-bottom: 0; }
 
 .edu-title {
   font-size: var(--t-heading);
   font-weight: 700;
   letter-spacing: 0.02em;
-  margin-bottom: var(--s-4);
   line-height: 1.2;
+  margin-bottom: var(--s-4);
 }
 
 .edu-hook {
@@ -507,6 +519,7 @@ section + section {
 
 .edu-body {
   font-size: var(--t-body);
+  font-weight: 400;
   color: var(--text-2);
   line-height: 1.8;
   margin-bottom: var(--s-4);
@@ -539,7 +552,10 @@ section + section {
   line-height: 1.8;
 }
 
-/* ─── 10. FAQ ────────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   FAQ — §6.6 Accordion
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 #faq {
   padding: var(--section-y) 0;
 }
@@ -560,6 +576,7 @@ section + section {
   gap: var(--s-4);
   background: none;
   border: none;
+  border-radius: 0;
   color: var(--text-1);
   font-family: var(--font);
   font-size: var(--t-body);
@@ -595,12 +612,16 @@ section + section {
 .faq-answer p {
   padding-bottom: var(--s-4);
   font-size: var(--t-sm);
+  font-weight: 400;
   color: var(--text-2);
   line-height: 1.8;
   max-width: 560px;
 }
 
-/* ─── 11. CONTACT ────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONTACT — §6.7
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 #contact {
   padding: var(--section-y) 0;
 }
@@ -613,6 +634,7 @@ section + section {
   flex-wrap: wrap;
 }
 
+/* §2 weight contrast: LARP (800) + .PARIS (300) */
 .contact-name {
   font-size: var(--t-display);
   font-weight: 800;
@@ -627,6 +649,7 @@ section + section {
 
 .contact-address {
   font-size: var(--t-sm);
+  font-weight: 400;
   color: var(--text-2);
   line-height: 1.8;
 }
@@ -638,6 +661,7 @@ section + section {
   padding-top: 4px;
 }
 
+/* §6.7 Contact Link */
 .contact-link {
   display: inline-block;
   text-decoration: none;
@@ -659,7 +683,10 @@ section + section {
   border-color: var(--white);
 }
 
-/* ─── 12. FOOTER ─────────────────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 #site-footer {
   padding: var(--s-7) 0;
   border-top: 1px solid var(--border);
@@ -673,9 +700,10 @@ section + section {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — §4 Breakpoints
    ═══════════════════════════════════════════════════════════════════════════ */
 
+/* Tablet: 900px — team grid collapses */
 @media (max-width: 900px) {
   .team-grid {
     grid-template-columns: 1fr;
@@ -683,8 +711,8 @@ section + section {
   }
 }
 
+/* Mobile nav: 768px */
 @media (max-width: 768px) {
-  /* Mobile nav overlay */
   #main-nav {
     position: fixed;
     inset: 0;
@@ -717,9 +745,7 @@ section + section {
     letter-spacing: 0.2em;
   }
 
-  #nav-toggle {
-    display: flex;
-  }
+  #nav-toggle { display: flex; }
 
   .contact-layout {
     flex-direction: column;
@@ -732,6 +758,7 @@ section + section {
   }
 }
 
+/* Mobile: 600px — mosaic + team stack */
 @media (max-width: 600px) {
   html { font-size: 15px; }
 
@@ -746,10 +773,6 @@ section + section {
   }
 
   .mosaic-row {
-    grid-template-columns: 1fr;
-  }
-
-  .mosaic-row.three-col {
     grid-template-columns: 1fr;
   }
 

@@ -1,11 +1,15 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    LARP.PARIS — Interactions
+   Source of truth: LARP-paris-design.md §5 (Motion) + §6 (Components)
    ═══════════════════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ─── SCROLL REVEAL ────────────────────────────────────────────────────────
-  const revealEls = document.querySelectorAll('.reveal');
+  const header = document.getElementById('site-header');
+
+
+  // ─── §5 SCROLL REVEAL ─────────────────────────────────────────────────────
+  // Elements with .reveal fade in from opacity 0 + translateY(24px) → visible
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -15,16 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { rootMargin: '0px 0px -80px 0px', threshold: 0.06 });
 
-  revealEls.forEach(el => revealObserver.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 
-  // ─── STAGGER TEAM CARDS ───────────────────────────────────────────────────
+  // ─── §5 STAGGER — team cards ──────────────────────────────────────────────
   document.querySelectorAll('.team-card.reveal').forEach((card, i) => {
     card.style.transitionDelay = `${i * 0.08}s`;
   });
 
 
-  // ─── LOGO HANDOFF (hero logo → header logo) ───────────────────────────────
+  // ─── §8 LOGO HANDOFF ──────────────────────────────────────────────────────
+  // Header logo is hidden while the hero logo is in view; appears after scroll
   const heroLogo = document.querySelector('.hero-logo');
   const headerLogo = document.getElementById('header-logo-img');
 
@@ -38,8 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // ─── HEADER COMPACT ON SCROLL ─────────────────────────────────────────────
-  const header = document.getElementById('site-header');
+  // ─── §8 HEADER COMPACT STATE ──────────────────────────────────────────────
+  // Adds backdrop blur + dark bg after scrolling 60px
   window.addEventListener('scroll', () => {
     header.classList.toggle('is-compact', window.scrollY > 60);
   }, { passive: true });
@@ -47,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ─── MOBILE NAV ───────────────────────────────────────────────────────────
   const navToggle = document.getElementById('nav-toggle');
-  const mainNav = document.getElementById('main-nav');
+  const mainNav   = document.getElementById('main-nav');
 
   navToggle.addEventListener('click', () => {
     const isOpen = mainNav.classList.toggle('open');
@@ -81,12 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // ─── FAQ ACCORDION ────────────────────────────────────────────────────────
+  // ─── §6.6 FAQ ACCORDION ───────────────────────────────────────────────────
+  // One item open at a time; icon rotates 45° when open
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
-      const answer = btn.nextElementSibling;
-      const icon = btn.querySelector('.faq-icon');
+      const answer   = btn.nextElementSibling;
+      const icon     = btn.querySelector('.faq-icon');
 
       // Close all others
       document.querySelectorAll('.faq-question[aria-expanded="true"]').forEach(other => {
@@ -97,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
+      // Toggle current
       btn.setAttribute('aria-expanded', !expanded);
       icon.textContent = expanded ? '+' : '−';
       answer.style.maxHeight = expanded ? null : answer.scrollHeight + 'px';

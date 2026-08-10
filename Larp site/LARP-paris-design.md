@@ -75,7 +75,7 @@ font-family: "proxima-nova", system-ui, -apple-system, sans-serif;
 | `--t-body-lg` | `1.15rem` | 300 | Intro text, manifesto support, taglines |
 | `--t-heading` | `clamp(1.4rem, 2.5vw, 2rem)` | 700 | Show titles (text), team names, edu headings |
 | `--t-display` | `clamp(2.4rem, 5vw, 4rem)` | 800 | Show titles (display), contact name, manifesto |
-| `--t-hero` | `clamp(3.5rem, 9vw, 8rem)` | 900 | Reserved for future hero text |
+| `--t-hero` | `clamp(2.75rem, 7vw, 6rem)` | 900 | Hero headline (`.hero-headline`) — see §6.8 |
 
 ### Line Height
 | Context | Value |
@@ -478,6 +478,28 @@ Starts with `--border` (subtle), inverts to full white on hover. Same inversion 
 
 ---
 
+### 6.8 Hero Headline
+
+The hero previously only carried the logo and a small tagline, leaving `--t-hero` (defined above) unused. It now opens with a two-line headline that uses the reserved token and follows the same weight-contrast logic as `.contact-name` / `.contact-name-thin`.
+
+```css
+.hero-headline {
+  margin-top: var(--s-4);
+  font-size: var(--t-hero);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.hero-headline-thin { font-weight: 300; }
+.hero-headline-bold { font-weight: 900; }
+```
+
+Markup: an `<h1>` with two `<span>` lines — the setup at weight 300, the payoff at weight 900. Enters via the same `heroIn` keyframe as the logo/tagline, sequenced between them (see §5 Hero Entrance timing below).
+
+**Updated hero entrance sequence** (§5): logo `0.3s` → headline `0.7s` → tagline `1.15s` → scroll cue `2.1s` (line grow `2.7s`). Several sizing changes keep the four stacked hero elements clear of the absolutely-positioned `.scroll-cue` on shorter viewports: the logo shrank (`clamp(120px, 16vw, 200px)`, was `clamp(160px, 26vw, 300px)`); `--t-hero` itself was scaled down (`clamp(2.75rem, 7vw, 6rem)`, was `clamp(3.5rem, 9vw, 8rem)`) since it's now consumed by a two-line headline rather than reserved for a short display word; `#hero` top padding is `clamp(96px, 14vh, 120px)`, bottom padding `--s-11` (a deliberately large reserve so the scroll cue never crowds the tagline even when the hero content is vertically centered in a short viewport); element margins are `--s-4`; headline `line-height: 1.08`.
+
+---
+
 ## 7. Photography Rules
 
 ### Default (all shows except Qualia)
@@ -563,4 +585,4 @@ The logo appears in the header only after the hero logo scrolls out of view — 
 
 ---
 
-*Last updated: May 2026*
+*Last updated: August 2026*

@@ -7,7 +7,7 @@ All text, images, and links extracted from the current site.
 ## META
 
 - **Page title:** LARP.PARIS — Immersive Theatre Laboratory
-- **Meta description:** Theatre without a stage. A story without a script. Larp.Paris creates live immersive experiences where imagination is the only material.
+- **Meta description:** You won't sit in the dark and watch. You'll walk into it — and someone will hand you the story. Larp.Paris creates live immersive experiences where imagination is the only material.
 - **Copyright:** © 2026 LARP.PARIS
 
 ---
@@ -27,20 +27,22 @@ Links (anchor targets on the same page):
 ## HERO
 
 **Logo:** `assets/logo.png`
-**Tagline:** Theatre without a stage. A story without a script.
+**Headline (new — first use of `--t-hero`, weight contrast, mirrors `.contact-name` pattern):**
+"The story doesn't start." (weight 300) / "You do." (weight 900)
+**Tagline:** You won't sit in the dark and watch. You'll walk into it — and someone will hand you the story.
 
 ---
 
 ## ABOUT
 
 **Manifesto (large):**
-Larp.Paris creates live experiences where imagination is the only material. No actors. No audience. Just people — and the question of what happens when you hand them the story.
+We don't build sets. We build the moment right before you stop pretending you're safe. No actors. No audience. Just people — handed a story, and left to find out what they do with it.
 
 **Body 1:**
-We've worked across Moscow, Paris, and Tel Aviv. Our work has been recognized at major cultural festivals and supported by the European Commission's S+T+ARTS program.
+From Moscow to Paris to Tel Aviv, we've built these worlds inside black-box theatres, empty apartments, and festival stages — recognized at major cultural festivals along the way, and supported by the European Commission's S+T+ARTS program.
 
 **Accent (closing line):**
-Come as you are. Leave as someone who was here.
+Come as you are. Leave someone who was there.
 
 ---
 
@@ -57,7 +59,7 @@ Come as you are. Leave as someone who was here.
 | `assets/shows/encircling/04.png` | Encircling — atmosphere |
 
 **Description:**
-You wake up. You remember nothing. The people around you say they know who you are. Do you believe them? ENCIRCLING places participants inside a single, disorienting premise: total memory loss. You build a character from the fragments others offer you — and slowly discover the gap between who you think you are and who the world has decided you to be. No script. No actors. No safe distance.
+You open your eyes and nothing is familiar — not the room, not your name, not the faces calling you by one. ENCIRCLING drops you into a single unbearable premise: total memory loss. Strangers hand you pieces of a person they say is you. You decide how many of them to believe — and build yourself back from what's left. No script. No actors. No safe distance.
 
 **Credit:**
 Recognized as one of the best theatrical performances without actors in Russia by Afisha magazine. Performed in Moscow, Saint Petersburg, and Paris.
@@ -83,7 +85,7 @@ Recognized as one of the best theatrical performances without actors in Russia b
 - `assets/shows/logos/qualia-poster.webp`
 
 **Description:**
-How do you describe yellow to someone who has never seen it? QUALIA begins with a philosopher's thought experiment and ends somewhere harder to name. A black-and-white room. A voice called Mary who guides you through tasks involving color, sound, language, and touch. At the end, Mary tells you what she is. The question she leaves behind is whether that changes anything.
+Try to describe yellow to someone who has never seen it. QUALIA starts there — a thought experiment about a scientist named Mary, who knows everything about color but has only ever seen black and white. You become her. A voice guides you through a monochrome room, through tasks built from color, sound, language, touch. Then the room changes. What's left isn't the question of what you saw — it's whether knowing changes anything at all.
 
 **Credit:**
 Created at La Générale Paris. Premiered at the Tel Aviv International Theatre Festival, representing France.
@@ -95,6 +97,7 @@ Created at La Générale Paris. Premiered at the Tel Aviv International Theatre 
 **Photos:**
 | File | Alt |
 |---|---|
+| `assets/shows/failure/01.jpeg` | Failure — performance (undocumented in HTML — not currently placed) |
 | `assets/shows/failure/DSC07560b.jpg` | Failure — performance |
 | `assets/shows/failure/DSC07571b.jpg` | Failure — scene |
 | `assets/shows/failure/DSC07576b.jpg` | Failure — moment |
@@ -115,8 +118,10 @@ Created at La Générale Paris. Premiered at the Tel Aviv International Theatre 
 **Logo asset (currently unused in HTML):**
 - `assets/shows/logos/failure.jpg`
 
+**Note:** Only 3 of 17 available Failure photos are placed in the mosaic (§6.4, single hero + 2 small). Owner reviewed and chose to keep the 3-photo curation as-is rather than extending to a second mosaic row.
+
 **Description:**
-An old house in Belleville. A woman who collected stories of failure from strangers passing through. The belief that naming what went wrong might be the first step toward something else. You step inside. You invent a character. You move through image and word, exploring what failure has made you — and what it might yet make possible. Not therapy. Not confession. Something quieter — and stranger.
+An old house in Belleville. A woman inside who has spent years collecting the failures strangers hand her — the ones they don't tell anyone else. FAILURE asks you to become someone, hand over what went wrong in your life, and watch what she does with it. Not therapy. Not confession. Something closer to a ritual — for admitting the thing you've been carrying, and finding out it doesn't crush you to say it out loud.
 
 **Credit:**
 Premiered at Théâtre Les Enfants Terribles, Paris, June 2019.
@@ -125,10 +130,10 @@ Premiered at Théâtre Les Enfants Terribles, Paris, June 2019.
 
 ### Inbox
 
-**Photos:** None (placeholder — "Photos coming soon")
+**Photos:** None (placeholder — "Photos arriving soon")
 
 **Description:**
-Every message carries more than it says. Every collaboration hides more than it shows. INBOX is a playable exploration of how we communicate — and misunderstand — within small groups. Participants decode, align, and navigate the friction between individual intention and collective outcome. The rules are simple. The dynamics are not.
+Every message you send carries more than the words in it. Every reply hides a decision you didn't know you were making. INBOX drops a small group into a closed loop of messages, half-truths, and unspoken assumptions — and asks you to get something done together anyway. The rules are almost nothing. What you do with them is everything.
 
 ---
 
@@ -137,22 +142,23 @@ Every message carries more than it says. Every collaboration hides more than it 
 ### Sasha Ovechkin
 - **Photo:** `assets/team/sasha.png`
 - **Role:** Co-Founder · Experience Design, Production & Management
-- **Bio:** Sasha believes the most honest thing a performance can do is remove itself — no stage, no actors, no frame to hide behind. What's left is just people, and what people do when no one tells them what to do next.
+- **Bio:** Sasha believes the most honest thing a performance can do is remove itself — no stage, no actors, no frame to hide behind. What's left is just people, and what they do when no one tells them what happens next.
 
 ### Lisa Kelesidou
 - **Photo:** `assets/team/lisa.png`
 - **Role:** Co-Founder · Artistic Coordination, Facilitation & Operations
-- **Bio:** Lisa is interested in the moment just before trust. The hesitation. The calculation. And what makes people decide, despite everything, to step forward anyway.
+- **Bio:** Lisa is drawn to the moment just before trust — the hesitation, the calculation, and what makes people decide, despite everything, to step forward anyway.
 
 ### Sonya Tsytkina
 - **Photo:** `assets/team/sonya.png`
 - **Role:** Experience Design & Art Direction
-- **Bio:** Sonya thinks image precedes language. That what we see shapes what we're able to say — and that most of what matters happens in the gap between the two.
+- **Bio:** Sonya believes image precedes language — that what we see shapes what we're able to say, and that most of what matters happens in the gap between the two.
+- **Note:** Source file in `Larp site/Members photos/Original/` is named `Sofi.png`, but the live site and this doc use "Sonya Tsytkina." Flagging for owner confirmation — not changed here since it wasn't part of the requested scope.
 
 ### Kirill Tsytkin
 - **Photo:** `assets/team/kirill.png`
 - **Role:** Systems, Narrative & Technology
-- **Bio:** Kirill fights entropy. He takes chaos — raw sound, scattered data, loose ideas — and wraps it into systems, words, images that hold. He believes meaning isn't found. It's built.
+- **Bio:** Kirill fights entropy — taking chaos (raw sound, scattered data, loose ideas) and wrapping it into systems, words, images that hold. Meaning isn't found, he believes. It's built.
 
 ---
 
@@ -161,18 +167,18 @@ Every message carries more than it says. Every collaboration hides more than it 
 ### For Organizations
 
 **Hook (light weight):**
-The most useful thing a team can do together is not a workshop. It's an experience that makes the workshop unnecessary.
+The most useful thing a team can do together isn't a workshop. It's an hour where the stakes feel real and no one's watching from the side.
 
 **Body 1:**
-Larp.Paris designs LARP-based trainings built around real challenges: how groups make decisions, how failure gets processed, how people hear each other when the stakes feel real. We work with teams of 2 to 500, across formats ranging from a single afternoon to two full days.
+Larp.Paris designs LARP-based trainings around the moments that actually define how teams work: how you decide together, how you recover from getting it wrong, how you actually hear the person across the table when it matters. We build for groups of 2 to 500, in formats from a single afternoon to two full days.
 
 **Body 2:**
-What stays the same: no passive participation. No PowerPoints. No one watching from the side.
+What never changes: no passive participation, no PowerPoints, no one sitting this one out.
 
 **List:**
-- Briefings, immersive play, and structured debrief
+- Briefings, immersive play, and a structured debrief
 - 2–4 professional coaches and game masters
-- Theatrical set-ups at arts venues or locations of your choice
+- Theatrical staging — at an arts venue, or wherever you are
 - Optional modules on in-team communication
 - Professional photo documentation
 
@@ -184,10 +190,10 @@ What stays the same: no passive participation. No PowerPoints. No one watching f
 We bring participatory theatre into classrooms — not as entertainment, but as method. Using gamification, interactive projections, and immersive storytelling, we teach complex topics through direct experience: circular economy, identity, social responsibility.
 
 **Body 2:**
-Students don't receive information. They make it.
+Students don't receive information. They make it — and remember it because they lived it.
 
 **CTA:**
-Get in touch to design a program for your team or institution.
+Tell us about your students, and we'll build the program around them.
 
 ---
 
@@ -195,11 +201,11 @@ Get in touch to design a program for your team or institution.
 
 | Question | Answer |
 |---|---|
-| What is LARP? | LARP (Live Action Role Playing) is an immersive, participatory theatrical experience where the audience transforms into participants who co-create the story. There are no spectators, no actors — only you. |
-| Do I need experience or special skills? | No preparation or specific skills are required. You'll be guided through on-the-spot workshops that ease you into full participation. |
+| What is LARP? | LARP (Live Action Role Playing) is an immersive, participatory theatrical experience where the audience transforms into participants who co-create the story as it happens. There are no spectators, no actors — only you. |
+| Do I need experience or special skills? | None at all. You'll be guided through short, on-the-spot workshops that ease you in — by the time the story starts, you'll already know how to be part of it. |
 | How long do experiences last? | Most experiences run 1.5 to 2 hours, with corporate trainings extending from 4 hours to 2 days. |
 | How many people can participate? | Group sizes vary by experience. Corporate trainings can scale from 2 to 500 participants. |
-| What should I expect? | Expect immersive set-ups, gamification mechanics, guided facilitation, and technology that serves the story. You'll create a fictional character, interact with others, and discover unexpected truths through collective creativity. |
+| What should I expect? | Expect to walk into a set-up built to make you forget it's a set-up — immersive spaces, gamification mechanics, guided facilitation, and technology that serves the story rather than interrupting it. You'll build a character, interact with strangers, and discover a few unexpected truths along the way. |
 | Can I take photos or videos? | Professional photo reports are provided by the organizers. Personal mobile phones and video recording are not permitted during the experience in order to preserve full immersion. |
 | What languages are experiences offered in? | Experiences are available in English and French. |
 

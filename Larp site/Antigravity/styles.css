@@ -24,7 +24,7 @@
   --t-body-lg: 1.15rem;
   --t-heading: clamp(1.4rem, 2.5vw, 2rem);
   --t-display: clamp(2.4rem, 5vw, 4rem);
-  --t-hero:    clamp(3.5rem, 9vw, 8rem);
+  --t-hero:    clamp(2.75rem, 7vw, 6rem);
 }
 
 /* ─── §3 SPACING TOKENS ─────────────────────────────────────────────────── */
@@ -229,16 +229,34 @@ section + section {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 120px var(--container-pad) var(--s-8);
+  padding: clamp(96px, 14vh, 120px) var(--container-pad) var(--s-11);
   position: relative;
 }
 
 /* §5 Hero entrance animations */
 .hero-logo {
-  width: clamp(160px, 26vw, 300px);
+  width: clamp(120px, 16vw, 200px);
   opacity: 0;
   animation: heroIn 1.6s var(--ease) 0.3s forwards;
 }
+
+/* Hero headline — first use of --t-hero, reserved for exactly this */
+.hero-headline {
+  margin-top: var(--s-4);
+  font-size: var(--t-hero);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  animation: heroIn 1.6s var(--ease) 0.7s forwards;
+}
+
+.hero-headline-thin,
+.hero-headline-bold {
+  display: block;
+}
+
+.hero-headline-thin { font-weight: 300; }
+.hero-headline-bold { font-weight: 900; }
 
 .hero-tagline {
   margin-top: var(--s-4);
@@ -246,8 +264,9 @@ section + section {
   font-weight: 300;
   color: var(--text-2);
   letter-spacing: 0.04em;
+  max-width: 560px;
   opacity: 0;
-  animation: heroIn 1.6s var(--ease) 0.8s forwards;
+  animation: heroIn 1.6s var(--ease) 1.15s forwards;
 }
 
 @keyframes heroIn {
@@ -269,7 +288,7 @@ section + section {
   text-transform: uppercase;
   color: var(--text-3);
   opacity: 0;
-  animation: heroIn 1s var(--ease) 1.8s forwards;
+  animation: heroIn 1s var(--ease) 2.1s forwards;
 }
 
 .scroll-cue::after {
@@ -279,7 +298,7 @@ section + section {
   background: var(--text-3);
   transform: scaleY(0);
   transform-origin: top;
-  animation: lineGrow 1s var(--ease) 2.4s forwards;
+  animation: lineGrow 1s var(--ease) 2.7s forwards;
 }
 
 @keyframes lineGrow {

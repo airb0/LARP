@@ -30,8 +30,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 /* Photos are monochrome everywhere */
 .ph { filter: grayscale(1) contrast(1.06) url(#ca); }
 /* Chromatic aberration. A page-wide SVG filter re-rendered every scroll frame, so now:
-   photos get the #ca SVG filter each (index.html); headings and logo get a coloured fringe from shadows;
-   small text only the glow. */
+   photos get the #ca SVG filter each (index.html); all text and the logo get a coloured fringe from shadows. */
 
 /* Grain */
 .grain {
@@ -42,13 +41,13 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 
 /* Glow: soft halo in the text's own colour (cheap, replaces the blur that was in the #ca filter) */
-body { text-shadow: 0 0 3px color-mix(in srgb, currentColor 40%, transparent), 0 0 12px color-mix(in srgb, currentColor 28%, transparent); }
+/* Chromatic fringe (red 1px left + 0.5px up, cyan 1px right + 0.5px down) on white text only; grey and dark text get just the glow */
+:root { --fringe: -1px -.5px 0 rgba(255,60,60,.6), 1px .5px 0 rgba(0,225,255,.6);
+        --glow: 0 0 3px color-mix(in srgb, currentColor 40%, transparent), 0 0 12px color-mix(in srgb, currentColor 28%, transparent); }
+body { text-shadow: var(--fringe), var(--glow); }
+.menu p, .press li span, .teams p:not(.hook):not(.label), .person span, .faq .a p, .contact .links, .foot, .show .facts span, .show .next span { text-shadow: var(--glow); }
 .menu-btn svg, .menu .close svg, .show .x svg { filter: drop-shadow(0 0 3px rgba(236,235,232,.4)) drop-shadow(0 0 10px rgba(236,235,232,.25)); }
-/* Fringe = red copy 1px left/0.5px up, blue copy 1px right/0.5px down, under the glow */
-.hero h1, .card h3, .show h2, .about .manifesto, .contact .ask, .show .next b {
-  text-shadow: -1px -.5px 0 rgba(255,60,60,.6), 1px .5px 0 rgba(40,170,255,.6),
-               0 0 3px color-mix(in srgb, currentColor 40%, transparent), 0 0 12px color-mix(in srgb, currentColor 28%, transparent); }
-.hero-logo img, .logo-slot img { filter: drop-shadow(-1px -.5px 0 rgba(255,60,60,.6)) drop-shadow(1px .5px 0 rgba(40,170,255,.6)) drop-shadow(0 0 3px rgba(236,235,232,.4)) drop-shadow(0 0 10px rgba(236,235,232,.25)); }
+.hero-logo img, .logo-slot img { filter: drop-shadow(-1px -.5px 0 rgba(255,60,60,.6)) drop-shadow(1px .5px 0 rgba(0,225,255,.6)) drop-shadow(0 0 3px rgba(236,235,232,.4)) drop-shadow(0 0 10px rgba(236,235,232,.25)); }
 
 /* ---------- Motion primitives ---------- */
 /* Text appears as a whole block: short fade and lift, no per-line or per-word motion */
@@ -105,9 +104,9 @@ body { text-shadow: 0 0 3px color-mix(in srgb, currentColor 40%, transparent), 0
 @media (min-width: 900px) { .sec { padding: 160px var(--gut); } }
 /* Section labels: dark text on a light bar that runs off the left edge of the page */
 .sec .label { display: inline-block; font-size: 13px; font-weight: 600; font-stretch: 110%; line-height: 1.2; letter-spacing: .01em;
-  color: var(--bg); background: var(--fg); text-shadow: none;
+  color: var(--bg); background: var(--fg); text-shadow: var(--fringe);
   margin: 0 0 28px calc(-1 * var(--gut)); padding: 3px 7px 3px var(--gut);
-  box-shadow: 0 0 10px rgba(236, 235, 232, .25); }
+  box-shadow: var(--fringe), 0 0 3px rgba(236, 235, 232, .4), 0 0 12px rgba(236, 235, 232, .28); } /* plate glows with the same red/cyan fringe */
 
 .about .manifesto { margin: 0; font-weight: 300; font-size: clamp(27px, 5.2vw, 60px); line-height: 1.14; letter-spacing: -.01em; max-width: 22ch; }
 .about .manifesto strong { font-weight: 700; }

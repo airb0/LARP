@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=52">
+<link rel="stylesheet" href="styles.css?v=58">
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
@@ -27,11 +27,10 @@
   <filter id="ca" color-interpolation-filters="sRGB" x="-1%" y="-1%" width="102%" height="102%">
     <feColorMatrix in="SourceGraphic" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r"/>
     <feOffset in="r" dx="-1" dy="-0.5" result="r2"/>
-    <feColorMatrix in="SourceGraphic" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="g"/>
-    <feColorMatrix in="SourceGraphic" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="b"/>
-    <feOffset in="b" dx="1" dy="0.5" result="b2"/>
-    <feBlend in="r2" in2="g" mode="screen" result="rg"/>
-    <feBlend in="rg" in2="b2" mode="screen"/>
+    <!-- green + blue move together: red fringe on one side, cyan on the other -->
+    <feColorMatrix in="SourceGraphic" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" result="gb"/>
+    <feOffset in="gb" dx="1" dy="0.5" result="gb2"/>
+    <feBlend in="r2" in2="gb2" mode="screen"/>
   </filter>
 </svg>
 

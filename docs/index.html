@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LARP.Paris · Immersive theatre laboratory</title>
+<meta name="description" content="Theatre without a stage. A story without a script. LARP.Paris makes theatre you play instead of watch: no actors, no audience, everyone takes a character.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LARP.Paris">
+<meta property="og:title" content="LARP.Paris · Theatre without a stage. A story without a script.">
+<meta property="og:description" content="Theatre you play instead of watch. No actors, no audience: everyone in the room takes a character.">
+<meta property="og:url" content="https://larp.paris/">
+<meta property="og:image" content="https://larp.paris/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=52">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="ca" color-interpolation-filters="sRGB" x="-1%" y="-1%" width="102%" height="102%">
+    <feColorMatrix in="SourceGraphic" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="r"/>
+    <feOffset in="r" dx="-1" dy="-0.5" result="r2"/>
+    <feColorMatrix in="SourceGraphic" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="g"/>
+    <feColorMatrix in="SourceGraphic" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="b"/>
+    <feOffset in="b" dx="1" dy="0.5" result="b2"/>
+    <feBlend in="r2" in2="g" mode="screen" result="rg"/>
+    <feBlend in="rg" in2="b2" mode="screen"/>
+  </filter>
+</svg>
+
+<div class="top-fade" aria-hidden="true"></div>
+<header class="hdr">
+  <a class="logo-slot" href="#top" aria-label="LARP.Paris, back to top" tabindex="-1"><img src="assets/logo.png" alt="" width="970" height="624"></a>
+  <nav aria-label="Main">
+    <a href="#performances">Performances</a><a href="#teams">For teams</a><a href="#people">People</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+  </nav>
+  <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="menu"><svg width="24" height="16" viewBox="0 0 24 16" aria-hidden="true"><path d="M0 1h24M0 8h24M0 15h24" stroke="currentColor" stroke-width="1.5"/></svg></button>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <button class="close" aria-label="Close menu"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M1 1l16 16M17 1 1 17" stroke="currentColor" stroke-width="1.5"/></svg></button>
+  <ul>
+    <li><a href="#performances">Performances</a></li>
+    <li><a href="#teams">For teams</a></li>
+    <li><a href="#people">People</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <p>larp.paris@gmail.com<br>53 rue Monge, 75005 Paris</p>
+</div>
+
+<main id="top">
+  <section class="hero">
+    <div class="bg px" data-px><img class="ph" src="assets/enc-light.jpg" alt="Participants sitting in a circle on a dark stage under a single light" fetchpriority="high"></div>
+    <div class="copy">
+      <div class="hero-logo"><img src="assets/logo.png" alt="LARP.Paris" width="970" height="624"></div>
+      <h1 class="split" data-now><span class="ln">Theatre without a stage.</span> <span class="ln">A story without a script.</span></h1>
+    </div>
+  </section>
+
+  <section class="sec about" id="about">
+    <p class="label rise">What this is</p>
+    <p class="manifesto split">LARP.Paris creates live experiences where imagination is the only material. No actors. No audience. Just people, and the question of what happens when you hand them the story.</p>
+  </section>
+
+  <section class="sec shows" id="performances">
+    <div class="head"><p class="label rise">Performances</p></div>
+    <div class="show-list">
+      <a class="card wide" href="#qualia" data-show="qualia">
+        <div class="img frame px" data-px><img class="ph" src="assets/qua-blue2.jpg" alt="Participants in headphones moving in the dark" loading="lazy"></div>
+        <div class="txt">
+          <h3 class="split">Qualia</h3>
+          <p class="log rise">Can you ever really convey what you sense to someone else?</p>
+        </div>
+      </a>
+      <a class="card" href="#encircling" data-show="encircling">
+        <div class="img frame px" data-px><img class="ph" src="assets/enc-circle.jpg" alt="A wide circle of participants on a dark stage" loading="lazy"></div>
+        <div class="txt">
+          <h3 class="split">Encircling</h3>
+          <p class="log rise">Imagine losing your memory. Who would you ask for the truth, and would they tell it?</p>
+        </div>
+      </a>
+      <a class="card" href="#failure" data-show="failure">
+        <div class="img frame px" data-px><img class="ph" src="assets/fai-masks.jpg" alt="Masked participants on a staircase" loading="lazy"></div>
+        <div class="txt">
+          <h3 class="split">Failure</h3>
+          <p class="log rise">Everyone keeps one failure they never talk about. An old house in Belleville is collecting them.</p>
+        </div>
+      </a>
+      <a class="card noimg wide" href="#inbox" data-show="inbox">
+        <div class="txt">
+          <h3 class="split">Inbox</h3>
+          <p class="log rise">What if your whole life took just one evening? What message would you leave?</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec press" id="press">
+    <p class="label rise">Recognition</p>
+    <ul>
+      <li class="rise"><b>Tel Aviv International Theatre Festival</b><span>Qualia opened the 5th edition in 2023 with its world premiere, representing France.</span></li>
+      <li class="rise"><b>Afisha</b><span>Named Encircling among the best performances without actors.</span></li>
+      <li class="rise"><b>La Générale, Paris</b><span>Qualia was created during a residency at this art and research lab.</span></li>
+    </ul>
+  </section>
+
+  <section class="sec teams" id="teams">
+    <p class="label rise">For teams and schools</p>
+    <p class="hook split">A team learns more from two hours inside a story than from a day of slides.</p>
+    <div class="cols">
+      <div class="rise">
+        <h3>For organisations</h3>
+        <p>Each training is built around what your team is working on: deciding together, dealing with failure, listening under pressure. Game masters run the play and a debrief afterwards.</p>
+        <p>From 2 to 500 people, from one afternoon to two days.</p>
+      </div>
+      <div class="rise" style="--d: 120ms">
+        <h3>For schools and institutions</h3>
+        <p>In schools we use role-play, game mechanics and interactive projection for subjects that are hard to teach from a textbook: circular economy, identity, social responsibility. Students learn them by acting them out.</p>
+      </div>
+    </div>
+    <div class="photo px" data-px><img class="ph" src="assets/enc-point.jpg" alt="A game master explains a scene to a participant" loading="lazy"></div>
+  </section>
+
+  <section class="sec" id="people">
+    <p class="label rise">People</p>
+    <div class="people">
+      <div class="person rise"><div class="img frame"><img class="ph" src="assets/team/sasha.jpg" alt="Sasha Ovechkin" loading="lazy"></div><b>Sasha Ovechkin</b><span>Experience design, production</span></div>
+      <div class="person rise" style="--d: 80ms"><div class="img frame"><img class="ph" src="assets/team/lisa.jpg" alt="Lisa Kelesidou" loading="lazy"></div><b>Lisa Kelesidou</b><span>Artistic coordination, facilitation</span></div>
+      <div class="person rise" style="--d: 160ms"><div class="img frame"><img class="ph" src="assets/team/sofi.jpg" alt="Sonya Tsytkina" loading="lazy"></div><b>Sonya Tsytkina</b><span>Experience design, art direction</span></div>
+      <div class="person rise" style="--d: 240ms"><div class="img frame"><img class="ph" src="assets/team/kirill.jpg" alt="Kirill Tsytkin" loading="lazy"></div><b>Kirill Tsytkin</b><span>Narrative, technology</span></div>
+    </div>
+  </section>
+
+  <section class="sec faq" id="faq">
+    <p class="label rise">Questions</p>
+    <div class="rise">
+      <details class="q"><summary>What is LARP?<i></i></summary><div class="a"><p>Live action role-play. Everyone in the room takes part and builds the story together. There are no actors and no spectators.</p></div></details>
+      <details class="q"><summary>Do I need experience?<i></i></summary><div class="a"><p>No. A short workshop at the start eases you into your character and the rules of the evening.</p></div></details>
+      <details class="q"><summary>How long does it last?<i></i></summary><div class="a"><p>Most performances run 1.5 to 2 hours. Trainings for teams run from 4 hours to 2 days.</p></div></details>
+      <details class="q"><summary>How many people can take part?<i></i></summary><div class="a"><p>It depends on the performance. Team trainings scale from 2 to 500 people.</p></div></details>
+      <details class="q"><summary>What should I expect?<i></i></summary><div class="a"><p>A set that puts you inside the story, a few game mechanics, facilitators who guide without directing, and technology where the story needs it. You create a character, meet the others, and find out things about them and yourself that nobody planned.</p></div></details>
+      <details class="q"><summary>Can I take photos?<i></i></summary><div class="a"><p>We photograph every performance and share the photos with you afterwards. Phones stay away during the performance so nobody has to step out of the story.</p></div></details>
+      <details class="q"><summary>Which languages?<i></i></summary><div class="a"><p>English and French.</p></div></details>
+    </div>
+  </section>
+
+  <section class="sec contact" id="contact">
+    <p class="ask split">Want to create your own LARP?</p>
+    <p class="links rise">
+      <a class="ul" href="mailto:larp.paris@gmail.com">larp.paris@gmail.com</a>
+      <a class="ul" href="tel:+33650518485">+33 6 50 51 84 85</a>
+      <a class="ul" href="https://www.instagram.com/larp.paris" rel="noopener">@larp.paris</a>
+      <span>53 rue Monge, 75005 Paris</span>
+    </p>
+    <div class="foot"><span>© 2026 LARP.Paris</span><a class="ul" href="#top">Back to top</a></div>
+  </section>
+</main>
+
+<!-- ============ Show overlays ============ -->
+<article class="show" id="show-qualia" data-show="qualia" data-lenis-prevent hidden aria-label="Qualia">
+  <button class="x" aria-label="Close"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M1 1l16 16M17 1 1 17" stroke="currentColor" stroke-width="1.5"/></svg></button>
+  <div class="top px" data-px><img class="ph" src="assets/qua-blue2.jpg" alt="Participants in headphones moving in the dark"><div class="t"><h2 class="split">Qualia</h2><p class="log rise">Can you ever really convey what you sense to someone else?</p></div></div>
+  <div class="body">
+    <div class="story rise">
+      <p>Qualia is the philosophers' word for how an experience feels from the inside: the redness of red, the sound of a voice, the weight of a glance. Everyone has them. Nobody can hand them over.</p>
+      <p>The performance takes that problem seriously. A group of strangers tries to share what they perceive, in words and without them, and discovers how far one mind can reach another. Someone else in the room is trying too.</p>
+    </div>
+    <div class="facts rise">
+      <div><span>Created</span>Residency at La Générale, Paris</div>
+      <div><span>Premiere</span>Opened the 5th Tel Aviv International Theatre Festival, representing France, September 2023</div>
+    </div>
+  </div>
+  <div class="gal">
+    <div class="frame"><img class="ph" src="assets/qua-circle-bw.jpg" alt="Participants around a table" loading="lazy"></div>
+    <div class="frame"><img class="ph" src="assets/qua-table.jpg" alt="The octagonal table before the players arrive" loading="lazy"></div>
+    <div class="frame"><img class="ph" src="assets/qua-green.jpg" alt="A participant in headphones" loading="lazy"></div>
+    <div class="frame"><img class="ph" src="assets/qua-cloud.jpg" alt="A participant captured as a point cloud" loading="lazy"></div>
+    <div class="frame"><img class="ph" src="assets/qua-blue.jpg" alt="The group moving together" loading="lazy"></div>
+  </div>
+  <a class="next" href="#encircling" data-show="encircling"><span>Next</span><b>Encircling</b></a>
+</article>
+
+<article class="show" id="show-encircling" data-show="encircling" data-lenis-prevent hidden aria-label="Encircling">
+  <button class="x" aria-label="Close"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M1 1l16 16M17 1 1 17" stroke="currentColor" stroke-width="1.5"/></svg></button>
+  <div class="top px" data-px><img class="ph" src="assets/enc-circle.jpg" alt="A wide circle of participants on a dark stage"><div class="t"><h2 class="split">Encircling</h2><p class="log rise">Imagine losing your memory. Who would you ask for the truth, and would they tell it?</p></div></div>
+  <div class="body">
+    <div class="story rise">
+      <p>You start the evening remembering nothing. The people around you say they know who you are, and each of them tells it differently.</p>
+      <p>From their fragments you build a character, and slowly see the gap between who you think you are and who the others have decided you are.</p>
+      <p>A performance about identity, seen through the eyes of the people around you.</p>
+    </div>
+    <div class="facts rise">
+      <div><span>Played in</span>Moscow, Paris</div>
+      <div><span>Press</span>Named by Afisha among the best performances without actors</div>
+    </div>
+  </div>
+  <div class="gal">
+    <div class="frame"><img class="ph" src="assets/enc-light.jpg" alt="The circle under a single light" loading="lazy"></div>
+    <div class="frame"><img class="ph" src="assets/enc-kneel.jpg" alt="A participant kneels in the middle of a scene" loading="lazy"></div>
+    <div class="frame"><img class="ph" src="assets/enc-point.jpg" alt="Two participants in conversation" loading="lazy"></div>
+    <div class="frame"><img class="ph" src="assets/enc-screen.jpg" alt="Silhouettes in the circle" loading="lazy"></div>
+    <div class="frame"><img class="ph" src="assets/team-four.jpg" alt="Four participants sitting on the floor" loading="lazy"></div>
+  </div>
+  <a class="next" href="#failure" data-show="failure"><span>Next</span><b>Failure</b></a>
+</article>
+
+<article class="show" id="show-failure" data-show="failure" data-lenis-prevent hidden aria-label="Failure">
+  <button class="x" aria-label="Close"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M1 1l16 16M17 1 1 17" stroke="currentColor" stroke-width="1.5"/></svg></button>
+  <div class="top px" data-px><img class="ph" src="assets/fai-masks.jpg" alt="Masked participants on a staircase"><div class="t"><h2 class="split">Failure</h2><p class="log rise">Everyone keeps one failure they never talk about. An old house in Belleville is collecting them.</p></div></div>
+  <div class="body">
+    <div class="story rise">
+      <p>The house belonged to a woman who spent years collecting stories of failure from strangers passing through. She believed that naming what went wrong could be the first step towards something else.</p>
+      <p>You step inside and invent a character. Through images and words you find out what failure has made of you, and what it could still make possible.</p>
+    </div>
+    <div class="facts rise">
+      <div><span>Premiere</span>Théâtre Les Enfants Terribles, Paris, 2019</div>
+    </div>
+  </div>
+  <div class="gal">
+    <div class="frame"><img class="ph" src="assets/fai-sofa.jpg" alt="Participants in the living room of the house" loading="lazy"></div>
+    <div class="frame"><img class="ph" src="assets/fai-1.jpg" alt="Two participants talking on a sofa" loading="lazy"></div>
+    <div class="frame"><img class="ph" src="assets/fai-desk.jpg" alt="A participant at the writing desk" loading="lazy"></div>
+    <div class="frame"><img class="ph" src="assets/fai-woman.jpg" alt="Participants gathered around a cabinet" loading="lazy"></div>
+    <div class="frame"><img class="ph" src="assets/fai-3.jpg" alt="Participants reading their roles" loading="lazy"></div>
+  </div>
+  <a class="next" href="#inbox" data-show="inbox"><span>Next</span><b>Inbox</b></a>
+</article>
+
+<article class="show" id="show-inbox" data-show="inbox" data-lenis-prevent hidden aria-label="Inbox">
+  <button class="x" aria-label="Close"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M1 1l16 16M17 1 1 17" stroke="currentColor" stroke-width="1.5"/></svg></button>
+  <div class="top" style="height: 55svh; min-height: 380px"><div class="t"><h2 class="split">Inbox</h2><p class="log rise">What if your whole life took just one evening? What message would you leave?</p></div></div>
+  <div class="body">
+    <div class="story rise">
+      <p>A whole life in one evening. You invent a character before they are born, and the world greets them with a letter. From there the story carries them through childhood, youth, friendship and love, into the years when people grow close and the years when they fall silent side by side.</p>
+      <p>Inbox is a performance about the circle of life, and about what stays behind: the people who remember us, and what we leave in them.</p>
+    </div>
+    <div class="facts rise">
+      <div><span>First played</span>Moscow, 2016</div>
+    </div>
+  </div>
+  <a class="next" href="#qualia" data-show="qualia"><span>Next</span><b>Qualia</b></a>
+</article>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+<script src="main.js?v=50"></script>
+</body>
+</html>

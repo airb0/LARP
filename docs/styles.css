@@ -8,7 +8,7 @@
   --fg-2: #a3a29e;
   --fg-3: #6f6e6a;
   --line: rgba(236, 235, 232, .14);
-  --f: "Archivo", system-ui, -apple-system, sans-serif;
+  --f: "proxima-nova", system-ui, -apple-system, sans-serif; /* Adobe Fonts web project dry2ghs (index.html); Proxima has no width axis, so font-stretch below is a no-op */
   --ease: cubic-bezier(.16, 1, .3, 1);     /* expo-out: fast start, long soft landing */
   --ease-io: cubic-bezier(.65, 0, .35, 1);
   --gut: 16px;
@@ -48,6 +48,10 @@ body { text-shadow: var(--fringe), var(--glow); }
 .menu p, .timeline li span, .teams p:not(.hook):not(.label), .person span, .faq .a p, .contact .links, .foot, .show .facts span, .show .next span { text-shadow: var(--glow); }
 .menu-btn svg, .menu .close svg, .show .x svg { filter: drop-shadow(0 0 3px rgba(236,235,232,.4)) drop-shadow(0 0 10px rgba(236,235,232,.25)); }
 .hero-logo img, .logo-slot img { filter: drop-shadow(-1px -.5px 0 rgba(255,60,60,.6)) drop-shadow(1px .5px 0 rgba(0,225,255,.6)) drop-shadow(0 0 3px rgba(236,235,232,.4)) drop-shadow(0 0 10px rgba(236,235,232,.25)); }
+/* Header: a soft dark halo under the small logo, menu links and burger so they stand off whatever scrolls beneath */
+.hdr nav a { text-shadow: var(--fringe), var(--glow), 0 0 10px rgba(0,0,0,.75), 0 0 24px rgba(0,0,0,.55); }
+.logo-slot img { filter: drop-shadow(-1px -.5px 0 rgba(255,60,60,.6)) drop-shadow(1px .5px 0 rgba(0,225,255,.6)) drop-shadow(0 0 3px rgba(236,235,232,.4)) drop-shadow(0 0 10px rgba(236,235,232,.25)) drop-shadow(0 0 10px rgba(0,0,0,.75)) drop-shadow(0 0 20px rgba(0,0,0,.5)); }
+.menu-btn svg { filter: drop-shadow(0 0 3px rgba(236,235,232,.4)) drop-shadow(0 0 10px rgba(236,235,232,.25)) drop-shadow(0 0 8px rgba(0,0,0,.8)) drop-shadow(0 0 18px rgba(0,0,0,.5)); }
 
 /* ---------- Motion primitives ---------- */
 /* Text appears as a whole block: short fade and lift, no per-line or per-word motion */
@@ -64,7 +68,7 @@ body { text-shadow: var(--fringe), var(--glow); }
 .top-fade.on { opacity: 1; } /* appears together with the small header logo (main.js); solid part = half the header (32/38px) + 48px feathered edge */
 
 /* ---------- Header ---------- */
-.hdr { position: fixed; inset: 0 0 auto; z-index: 100; height: 64px; padding: 0 var(--gut); display: flex; align-items: center; justify-content: space-between; mix-blend-mode: difference; }
+.hdr { position: fixed; inset: 0 0 auto; z-index: 100; height: 64px; padding: 0 var(--gut); display: flex; align-items: center; justify-content: space-between; }
 .hdr .logo img { height: 28px; width: auto; }
 .hdr nav { display: none; gap: 28px; font-size: 14px; font-weight: 500; font-stretch: 110%; }
 .hdr nav a { text-decoration: none; opacity: .7; transition: opacity .5s ease; }
@@ -97,7 +101,7 @@ body { text-shadow: var(--fringe), var(--glow); }
 .hero .copy { position: relative; z-index: 1; padding: 0 var(--gut) calc(40px + env(safe-area-inset-bottom)); width: 100%; }
 .hero h1 { margin: 0; font-weight: 800; font-stretch: 125%; text-transform: uppercase; letter-spacing: -.015em; line-height: .94;
   /* Four fixed lines at every width: sized so the longest ("where the audience") fills the column, stops at 72px; on short windows shrinks so logo + headline fit */
-  font-size: clamp(20px, min(calc((100vw - 2 * var(--gut)) / 15.2), calc(10.4vh - 21px)), 72px); }
+  font-size: clamp(20px, min(calc((100vw - 2 * var(--gut)) / 11.3), calc(10.4vh - 21px)), 72px); }
 .hero h1 .ln { display: block; white-space: nowrap; }
 
 /* ---------- Sections ---------- */
@@ -146,9 +150,10 @@ body { text-shadow: var(--fringe), var(--glow); }
 
 /* ---------- For teams ---------- */
 .teams .hook { color: var(--fg); margin: 0; font-weight: 300; font-size: clamp(26px, 4.4vw, 52px); line-height: 1.15; max-width: 24ch; }
-.teams .cols { display: grid; gap: 48px; margin-top: 56px; }
-.teams h3 { margin: 0 0 14px; font-size: 22px; font-weight: 700; font-stretch: 115%; }
+.teams .cols { display: grid; gap: 48px; margin-top: 16px; }
+.teams h3 { margin: 0 0 14px; font-size: 22px; font-weight: 700; font-stretch: 115%; text-transform: uppercase; letter-spacing: .01em; }
 .teams p { margin: 0 0 1em; color: var(--fg-2); max-width: 50ch; }
+.teams p.meta { color: var(--fg); margin-top: 1.4em; }
 .teams ul { margin: 18px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .teams li { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
 .teams .photo { margin: 56px calc(-1 * var(--gut)) 0; aspect-ratio: 16/10; } /* full bleed, no hover zoom */
@@ -158,8 +163,8 @@ body { text-shadow: var(--fringe), var(--glow); }
 /* ---------- Team ---------- */
 .people { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 12px; }
 .person .img { aspect-ratio: 4/5; background: var(--bg-2); }
-.person .img img { width: 100%; height: 100%; object-fit: cover; opacity: .85; }
-.person:hover .img img { opacity: 1; filter: grayscale(1) contrast(1.14) url(#ca); }
+.person .img img { width: 100%; height: 100%; object-fit: cover; opacity: .85; filter: grayscale(1) contrast(1.06); } /* portraits stay clean: no chromatic aberration */
+.person:hover .img img { opacity: 1; filter: grayscale(1) contrast(1.14); }
 .person b { display: block; margin-top: 14px; font-weight: 700; font-stretch: 115%; font-size: 18px; line-height: 1.2; }
 .person span { display: block; color: var(--fg-2); font-size: 14px; margin-top: 4px; }
 @media (min-width: 900px) { .people { grid-template-columns: repeat(4, 1fr); gap: 20px; } }

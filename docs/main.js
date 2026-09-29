@@ -113,6 +113,139 @@
     parallax();
   }
 
+  // ---------- Inbox letters: a loose pile ----------
+  // Sheets sit in rows that overlap sideways by a quarter of a sheet; every other row is shifted half a step
+  // and has one sheet more, so it covers the seams of the rows around it. Each sheet gets a little jitter and a
+  // turn of up to ±10°. The lower a sheet sits, the higher it stacks. Only whole rows are shown, so the pile has
+  // no holes; spare sheets are hidden. Fixed seed: same pile every visit.
+  const pile = document.querySelector('.letters');
+  if (pile) {
+    const sheets = [...pile.querySelectorAll('img')];
+    let seed = 7;
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const jit = sheets.map(() => ({ dx: rnd() * 2 - 1, dy: rnd() * 2 - 1, r: (rnd() * 2 - 1) * 10 }));
+    const lay = () => {
+      const W = pile.clientWidth;
+      if (!W) return; // overlay still hidden
+      const w = W < 600 ? W * 0.52 : W < 1100 ? W * 0.36 : Math.min(W * 0.27, 440);
+      const h = (w * 1273) / 900;
+      const m = w * 0.12; // top room for a corner turned by 10°
+      const side = w * 0.3; // edge sheets hang up to 30% off the page (clipped by .letters)
+      const span = W - w + 2 * side;
+      const cols = Math.ceil(span / (w * 0.75)) + 1; // neighbours overlap by at least a quarter of a sheet
+      const stepX = span / (cols - 1), stepY = h * 0.4;
+
+      const pos = [];
+      for (let row = 0; ; row++) {
+        const n = row % 2 ? cols + 1 : cols;
+        if (row > 0 && pos.length + n > sheets.length) break;
+        for (let c = 0; c < n && pos.length < sheets.length; c++) {
+          const i = pos.length, j = jit[i];
+          pos.push({
+            el: sheets[i],
+            x: -side + c * stepX - (row % 2 ? stepX / 2 : 0) + j.dx * w * 0.08,
+            // the top row sits on one line (turn only), so the pile needs to slide only a little over the gallery
+            y: m + (row ? row * stepY + (c % 2) * h * 0.08 + j.dy * h * 0.05 : 0),
+            r: j.r,
+          });
+        }
+      }
+      sheets.forEach((el, i) => { el.hidden = i >= pos.length; });
+      [...pos].sort((a, b) => a.y - b.y).forEach((p, k) => { p.el.style.zIndex = k + 1; });
+      pos.forEach((p) => {
+        p.el.style.setProperty('--w', w.toFixed(1) + 'px');
+        p.el.style.setProperty('--x', p.x.toFixed(1) + 'px');
+        p.el.style.setProperty('--y', p.y.toFixed(1) + 'px');
+        p.el.style.setProperty('--r', p.r.toFixed(2) + 'deg');
+      });
+      // Slide up over the gallery just far enough that the notches between the turned top sheets fall on the photo
+      pile.style.marginTop = -Math.round(m + w * 0.1 + 8) + 'px';
+      // The bottom row is cut about halfway through by the Next line (clip-path on .letters)
+      pile.style.height = (Math.max(...pos.map((p) => p.y)) + h * 0.55) + 'px';
+    };
+    new ResizeObserver(lay).observe(pile);
+  }
+
+  // ---------- Failure card: dropped across the corner where four photos meet ----------
+  // Finds every point where four frames touch and puts the card on the middle one; redone on resize.
+  document.querySelectorAll('.show .gal .drop').forEach((card) => {
+    const gal = card.parentElement;
+    const place = () => {
+      const g = gal.getBoundingClientRect();
+      if (!g.width) return; // overlay still hidden
+      const rects = [...gal.querySelectorAll('.frame')].map((f) => f.getBoundingClientRect());
+      const touches = (r, x, y) => x >= r.left - 3 && x <= r.right + 3 && y >= r.top - 3 && y <= r.bottom + 3;
+      const corners = rects
+        .map((r) => ({ x: r.right + 2, y: r.bottom + 2 }))
+        .filter((p) => rects.filter((r) => touches(r, p.x, p.y)).length === 4);
+      if (!corners.length) { card.classList.remove('placed'); return; }
+      const p = corners[Math.floor(corners.length / 2)];
+      card.style.left = (p.x - g.left) + 'px';
+      card.style.top = (p.y - g.top) + 'px';
+      card.classList.add('placed');
+    };
+    new ResizeObserver(place).observe(gal);
+  });
+
+  // ---------- Photo viewer: click a gallery photo, page through that show's photos ----------
+  const lb = document.getElementById('lb');
+  const lbImg = lb.querySelector('img');
+  const lbCount = lb.querySelector('.count');
+  let lbItems = [], lbAt = 0, lbFrom = null, lbShow = null;
+  const lbSet = (i) => {
+    lbAt = (i + lbItems.length) % lbItems.length;
+    const src = lbItems[lbAt].querySelector('img');
+    lbImg.classList.add('fade');
+    const next = new Image();
+    next.onload = next.onerror = () => {
+      lbImg.src = src.currentSrc || src.src;
+      lbImg.alt = src.alt;
+      lbImg.classList.remove('fade');
+    };
+    next.src = src.currentSrc || src.src;
+    lbCount.textContent = `${lbAt + 1} / ${lbItems.length}`;
+    [lbAt - 1, lbAt + 1].forEach((k) => { new Image().src = lbItems[(k + lbItems.length) % lbItems.length].querySelector('img').src; });
+  };
+  const lbOpen = (item) => {
+    const gal = item.closest('.gal');
+    lbItems = [...gal.querySelectorAll('.frame, .drop')];
+    lbFrom = item;
+    lbShow = item.closest('article.show');
+    lb.classList.toggle('color', gal.classList.contains('hue'));
+    lbImg.removeAttribute('src');
+    lbSet(lbItems.indexOf(item));
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    if (lbShow) lbShow.inert = true;
+    lb.querySelector('.x').focus({ preventScroll: true });
+  };
+  const lbClose = () => {
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    if (lbShow) lbShow.inert = false;
+    if (lbFrom) lbFrom.focus({ preventScroll: true });
+  };
+  const lbIsOpen = () => lb.classList.contains('open');
+  document.querySelectorAll('.show .gal .frame, .show .gal .drop').forEach((item) => {
+    item.tabIndex = 0;
+    item.setAttribute('role', 'button');
+    item.setAttribute('aria-label', 'Open photo: ' + item.querySelector('img').alt);
+    item.addEventListener('click', () => lbOpen(item));
+    item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lbOpen(item); } });
+  });
+  lb.querySelector('.prev').addEventListener('click', () => lbSet(lbAt - 1));
+  lb.querySelector('.next').addEventListener('click', () => lbSet(lbAt + 1));
+  lb.querySelector('.x').addEventListener('click', lbClose);
+  lb.addEventListener('click', (e) => { if (e.target === lb) lbClose(); }); // click on the dark backdrop
+  let touchX = null;
+  lb.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    touchX = null;
+    if (Math.abs(dx) > 50) lbSet(lbAt + (dx < 0 ? 1 : -1));
+  });
+
   // Keyboard focus stays inside an open menu / show: everything behind becomes inert.
   const behind = [document.querySelector('main'), document.querySelector('.hdr')];
   const setInert = (on) => behind.forEach((el) => { if (el) el.inert = on; });
@@ -187,6 +320,7 @@
 
   const close = () => {
     if (!current) return;
+    if (lbIsOpen()) lbClose(); // browser Back with a photo open closes both
     const id = current;
     name(topImg(id), 'show-img');
     return transition(() => {
@@ -221,6 +355,12 @@
   }));
   addEventListener('popstate', fromHash);
   addEventListener('keydown', (e) => {
+    if (lbIsOpen()) { // the photo viewer takes the keys first
+      if (e.key === 'Escape') lbClose();
+      else if (e.key === 'ArrowLeft') lbSet(lbAt - 1);
+      else if (e.key === 'ArrowRight') lbSet(lbAt + 1);
+      return;
+    }
     if (e.key !== 'Escape') return;
     if (menu.classList.contains('open')) setMenu(false);
     else if (current) document.querySelector(`#show-${current} .x`).click();

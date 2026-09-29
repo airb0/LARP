@@ -217,11 +217,69 @@ details[open]::details-content { block-size: auto; }
 .show .next span { display: block; color: var(--fg-3); font-size: 13px; font-weight: 600; margin-bottom: 12px; }
 .show .next b { font-weight: 900; font-stretch: 125%; text-transform: uppercase; font-size: clamp(30px, 10vw, 120px); line-height: .9; opacity: .5; transition: opacity .7s ease; }
 .show .next:hover b { opacity: 1; }
+/* Galleries of any length close their last row: a lone last photo spans the row (photos only: "of .frame" skips the Failure card) */
+.show .gal .frame:nth-last-child(1 of .frame):nth-child(2n of .frame):not(:first-child) { grid-column: 1 / -1; aspect-ratio: 16/10; }
 @media (min-width: 900px) {
   .show .body { grid-template-columns: 7fr 4fr; gap: 64px; padding-top: 96px; }
   .show .gal { grid-template-columns: repeat(3, 1fr); }
   .show .gal .frame:first-child { grid-column: span 2; aspect-ratio: auto; }
+  /* first photo takes two cells, so rows close when count + 1 is a multiple of 3 */
+  .show .gal .frame:nth-last-child(1 of .frame):nth-child(2n of .frame):not(:first-child) { grid-column: auto; aspect-ratio: 4/5; }
+  .show .gal .frame:nth-last-child(1 of .frame):nth-child(3n+1 of .frame):not(:first-child) { grid-column: span 2; aspect-ratio: auto; }
+  .show .gal .frame:nth-last-child(1 of .frame):nth-child(3n of .frame):not(:first-child) { grid-column: 1 / -1; aspect-ratio: 21/9; }
 }
+
+/* Failure: one of the play's cards lies across the corner where four photos meet (position from main.js) */
+.show .gal { position: relative; }
+.show .gal .drop { position: absolute; left: 0; top: 0; z-index: 2; width: 30%; aspect-ratio: 944 / 1417; visibility: hidden;
+  transform: translate(-50%, -50%) rotate(-7deg); box-shadow: 0 3px 8px rgba(0,0,0,.5), 0 18px 48px rgba(0,0,0,.6); }
+.show .gal .drop.placed { visibility: visible; }
+.show .gal .drop img { width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 900px) { .show .gal .drop { width: 17%; } }
+
+/* Gallery photos open in the viewer */
+.show .gal .frame, .show .gal .drop { cursor: zoom-in; }
+.show .gal .frame:focus-visible, .show .gal .drop:focus-visible { outline-offset: -3px; }
+
+/* ---------- Photo viewer ---------- */
+.lb { position: fixed; inset: 0; z-index: 140; background: rgba(10,10,10,.96); display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility 0s linear .4s; touch-action: pan-y; }
+.lb.open { opacity: 1; visibility: visible; transition: opacity .4s ease; }
+.lb img { max-width: calc(100vw - 2 * var(--gut)); max-height: calc(100svh - 136px); width: auto; height: auto; object-fit: contain;
+  filter: grayscale(1) contrast(1.06) url(#ca); transition: opacity .35s ease; }
+.lb.color img { filter: contrast(1.06) url(#ca); } /* Qualia keeps its colour here */
+.lb img.fade { opacity: 0; }
+.lb .prev, .lb .next { position: absolute; top: 64px; bottom: 64px; width: 22%; display: flex; align-items: center; padding: 0 var(--gut); opacity: .7; transition: opacity .5s ease; }
+.lb .prev { left: 0; justify-content: flex-start; }
+.lb .next { right: 0; justify-content: flex-end; }
+.lb .x { position: absolute; top: 9px; right: var(--gut); padding: 14px 3px 14px 14px; display: flex; transition: opacity .5s ease; }
+.lb svg { filter: drop-shadow(0 0 3px rgba(236,235,232,.4)) drop-shadow(0 0 8px rgba(0,0,0,.8)); }
+.lb .count { position: absolute; left: 0; right: 0; bottom: calc(20px + env(safe-area-inset-bottom)); margin: 0; text-align: center; font-size: 13px; color: var(--fg-3); text-shadow: var(--glow); }
+@media (hover: hover) { .lb .prev:hover, .lb .next:hover { opacity: 1; } .lb .x:hover { opacity: .6; } }
+@media (prefers-reduced-motion: reduce) { .lb, .lb img { transition: none; } }
+
+/* Qualia: colour comes back on hover. A grey "saturation" layer keeps the photo monochrome and fades out
+   (a filter list with url(#ca) in it would snap instead of transitioning) */
+.hue img.ph, .gal.hue .frame img.ph { filter: contrast(1.06) url(#ca); }
+.card:hover .hue img.ph, .card:focus-visible .hue img.ph { filter: contrast(1.16) url(#ca); }
+.gal.hue .frame { position: relative; }
+.img.hue, .gal.hue .frame { isolation: isolate; }
+.img.hue::after, .gal.hue .frame::after { content: ""; position: absolute; inset: 0; background: #808080; mix-blend-mode: saturation; pointer-events: none; transition: opacity .9s ease; }
+.card:focus-visible .hue::after { opacity: 0; }
+@media (hover: hover) { .card:hover .hue::after, .gal.hue .frame:hover::after { opacity: 0; } }
+
+/* Inbox letters: a loose pile, each sheet turned up to ±10°, lower sheets lie on top (positions from main.js).
+   It slides up over the end of the gallery and is cut off flat at the bottom, on the line above Next. */
+/* Full bleed: edge sheets run off the sides of the page. overflow-x: clip cuts them without a sideways scroll;
+   clip-path cuts the bottom and leaves the top free to overhang the gallery. */
+.letters { position: relative; z-index: 1; margin: calc(-1 * clamp(80px, 18vw, 260px)) 0 0; height: 120vw;
+  overflow-x: clip; clip-path: inset(-400px 0 0 0); }
+.letters + .next { margin-top: 0; }
+.letters img { position: absolute; left: 0; top: 0; width: var(--w, 46%); height: auto; aspect-ratio: 900 / 1273; object-fit: cover;
+  filter: brightness(.86) contrast(1.05); box-shadow: 0 2px 6px rgba(0,0,0,.45), 0 14px 40px rgba(0,0,0,.5);
+  transform: translate(var(--x, 0), var(--y, 0)) rotate(var(--r, 0deg)); transition: filter .6s ease; }
+.letters img[hidden] { display: none; } /* spare sheets that would leave a half-filled row */
+@media (hover: hover) { .letters img:hover { filter: brightness(1) contrast(1.05); } }
 html.locked, html.locked body { overflow: hidden; }
 
 /* ---------- Parallax boxes: the image is taller than its box and slides inside it ---------- */

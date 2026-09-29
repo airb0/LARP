@@ -192,19 +192,22 @@
   const lbImg = lb.querySelector('img');
   const lbCount = lb.querySelector('.count');
   let lbItems = [], lbAt = 0, lbFrom = null, lbShow = null;
+  // The viewer always shows the largest copy in the photo's srcset, not the small one the gallery cell picked
+  const largest = (img) => (img.srcset ? img.srcset.split(',').pop().trim().split(' ')[0] : img.src);
   const lbSet = (i) => {
     lbAt = (i + lbItems.length) % lbItems.length;
     const src = lbItems[lbAt].querySelector('img');
+    const url = largest(src);
     lbImg.classList.add('fade');
     const next = new Image();
     next.onload = next.onerror = () => {
-      lbImg.src = src.currentSrc || src.src;
+      lbImg.src = url;
       lbImg.alt = src.alt;
       lbImg.classList.remove('fade');
     };
-    next.src = src.currentSrc || src.src;
+    next.src = url;
     lbCount.textContent = `${lbAt + 1} / ${lbItems.length}`;
-    [lbAt - 1, lbAt + 1].forEach((k) => { new Image().src = lbItems[(k + lbItems.length) % lbItems.length].querySelector('img').src; });
+    [lbAt - 1, lbAt + 1].forEach((k) => { new Image().src = largest(lbItems[(k + lbItems.length) % lbItems.length].querySelector('img')); });
   };
   const lbOpen = (item) => {
     const gal = item.closest('.gal');

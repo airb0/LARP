@@ -29,8 +29,12 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* Photos are monochrome everywhere */
 .ph { filter: grayscale(1) contrast(1.06) url(#ca); }
-/* Chromatic aberration. A page-wide SVG filter re-rendered every scroll frame, so now:
-   photos get the #ca SVG filter each (index.html); all text and the logo get a coloured fringe from shadows. */
+/* Chromatic aberration. A page-wide SVG filter re-rendered every scroll frame, and even per photo the CPU-only SVG filter made
+   hover zooms and parallax stutter. So the photos on the page are baked: <img class="ph b"> points at assets/NAME-SIZE-caVW.webp,
+   already grayscale + contrast + red/cyan fringe, where VW is the width (vw) the photo is shown at (sets the fringe strength).
+   Baked files must get no grayscale() (it would wipe the colour) and no url(#ca). Only the lightbox and the portraits still use
+   the live filter. Text and the logo get their fringe from shadows. */
+.ph.b { filter: none; }
 
 /* Grain */
 .grain {
@@ -124,8 +128,11 @@ body { text-shadow: var(--fringe), var(--glow); }
 .show-list { display: grid; gap: 4px; }
 .card { position: relative; display: block; text-decoration: none; overflow: hidden; background: var(--bg); height: min(76svh, 100vw); min-height: 320px; }
 .card .img { position: absolute; inset: 0; }
-.card .img img { width: 100%; height: 100%; object-fit: cover; opacity: .55; }
-.card:hover .img img, .card:focus-visible .img img { opacity: .75; filter: grayscale(1) contrast(1.16) url(#ca); }
+/* The chromatic fringe is baked into these photos (assets/*-ca.webp: grayscale + contrast + red/cyan offset) instead of the #ca SVG
+   filter. That filter runs on the CPU and cannot be composited, so with a full-width photo that also fades and zooms on hover it made
+   the scroll stutter. Only cheap contrast is left here; never add grayscale() (it would wipe the baked colour) or url(#ca) back. */
+.card .img img { width: 100%; height: 100%; object-fit: cover; opacity: .55; filter: none; will-change: opacity, scale; }
+.card:hover .img img, .card:focus-visible .img img { opacity: .75; filter: contrast(1.09); } /* 1.16 / 1.06 baked */
 .card::after { content: ""; position: absolute; inset: 0; background: rgba(10,10,10,.3); pointer-events: none; } /* top edge melts into the page, bottom darkens under the text */
 .card .txt { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 0 var(--gut) 36px; }
 .card h3 { margin: 0 0 16px; font-weight: 900; font-stretch: 125%; text-transform: uppercase; line-height: .86; letter-spacing: -.015em; font-size: clamp(28px, 10.4vw, 168px); }
@@ -247,7 +254,7 @@ details[open]::details-content { block-size: auto; }
 .lb.open { opacity: 1; visibility: visible; transition: opacity .4s ease; }
 .lb img { max-width: calc(100vw - 2 * var(--gut)); max-height: calc(100svh - 136px); width: auto; height: auto; object-fit: contain;
   filter: grayscale(1) contrast(1.06) url(#ca); transition: opacity .35s ease; }
-.lb.color img { filter: contrast(1.06) url(#ca); } /* Qualia keeps its colour here */
+.lb.color img { filter: contrast(1.06); } /* Qualia keeps its colour here, without the fringe */
 .lb img.fade { opacity: 0; }
 .lb .prev, .lb .next { position: absolute; top: 64px; bottom: 64px; width: 22%; display: flex; align-items: center; padding: 0 var(--gut); opacity: .7; transition: opacity .5s ease; }
 .lb .prev { left: 0; justify-content: flex-start; }
@@ -262,7 +269,7 @@ details[open]::details-content { block-size: auto; }
    and the grayscale one fades out (plain opacity: a mix-blend-mode "saturation" layer failed on composited images) */
 .gal.hue .frame { position: relative; }
 .gal.hue .frame img { position: absolute; inset: 0; }
-.gal.hue .frame img.col { filter: contrast(1.06) url(#ca); }
+.gal.hue .frame img.col { filter: none; } /* the colour copy is baked too: NAME-SIZE-col.webp (contrast only, no fringe) */
 .gal.hue .frame img.ph:not(.col) { transition: opacity .9s ease, scale 1.4s var(--ease); }
 @media (hover: hover) { .gal.hue .frame:hover img.ph:not(.col) { opacity: 0; } }
 

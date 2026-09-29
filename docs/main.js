@@ -192,6 +192,9 @@
     const gray = frame.querySelector('img');
     const col = gray.cloneNode();
     col.classList.add('col');
+    // colour version of the same photo, contrast baked in, no fringe (NAME-SIZE-caVW.webp -> NAME-SIZE-col.webp)
+    if (col.getAttribute('srcset')) col.setAttribute('srcset', col.getAttribute('srcset').replace(/-ca\d+\.webp/g, '-col.webp'));
+    col.setAttribute('src', col.getAttribute('src').replace(/-ca\d+\.webp/, '-col.webp'));
     col.alt = '';
     col.setAttribute('aria-hidden', 'true');
     frame.insertBefore(col, gray);
@@ -206,7 +209,8 @@
   // The viewer always shows the largest copy in the photo's srcset, not the small one the gallery cell picked
   const pic = (el) => (el.tagName === 'IMG' ? el : el.querySelector('img:not(.col)')); // a letter is the img itself; skip Qualia's colour copy
   const VIEWABLE = '.gal .frame, .gal .drop, .letters img:not([hidden])';
-  const largest = (img) => (img.srcset ? img.srcset.split(',').pop().trim().split(' ')[0] : img.src);
+  // (the viewer has its own live fringe filter, so it loads the original photo, not the baked -caVW / -col copy)
+  const largest = (img) => (img.srcset ? img.srcset.split(',').pop().trim().split(' ')[0] : img.getAttribute('src')).replace(/-(ca\d+|col)\.webp/, '.webp');
   const lbSet = (i) => {
     lbAt = (i + lbItems.length) % lbItems.length;
     const src = pic(lbItems[lbAt]);

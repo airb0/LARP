@@ -187,6 +187,16 @@
     new ResizeObserver(place).observe(gal);
   });
 
+  // ---------- Qualia gallery: a colour copy under each grayscale photo, revealed on hover (CSS) ----------
+  document.querySelectorAll('.gal.hue .frame').forEach((frame) => {
+    const gray = frame.querySelector('img');
+    const col = gray.cloneNode();
+    col.classList.add('col');
+    col.alt = '';
+    col.setAttribute('aria-hidden', 'true');
+    frame.insertBefore(col, gray);
+  });
+
   // ---------- Photo viewer: click a gallery photo, page through that show's photos ----------
   // In Inbox the letters of the pile follow the photos (only the sheets on show, not the spare hidden ones).
   const lb = document.getElementById('lb');
@@ -194,7 +204,7 @@
   const lbCount = lb.querySelector('.count');
   let lbItems = [], lbAt = 0, lbFrom = null, lbShow = null;
   // The viewer always shows the largest copy in the photo's srcset, not the small one the gallery cell picked
-  const pic = (el) => (el.tagName === 'IMG' ? el : el.querySelector('img')); // a letter is the img itself
+  const pic = (el) => (el.tagName === 'IMG' ? el : el.querySelector('img:not(.col)')); // a letter is the img itself; skip Qualia's colour copy
   const VIEWABLE = '.gal .frame, .gal .drop, .letters img:not([hidden])';
   const largest = (img) => (img.srcset ? img.srcset.split(',').pop().trim().split(' ')[0] : img.src);
   const lbSet = (i) => {

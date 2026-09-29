@@ -258,15 +258,13 @@ details[open]::details-content { block-size: auto; }
 @media (hover: hover) { .lb .prev:hover, .lb .next:hover { opacity: 1; } .lb .x:hover { opacity: .6; } }
 @media (prefers-reduced-motion: reduce) { .lb, .lb img { transition: none; } }
 
-/* Qualia: colour comes back on hover. A grey "saturation" layer keeps the photo monochrome and fades out
-   (a filter list with url(#ca) in it would snap instead of transitioning) */
-.hue img.ph, .gal.hue .frame img.ph { filter: contrast(1.06) url(#ca); }
-.card:hover .hue img.ph, .card:focus-visible .hue img.ph { filter: contrast(1.16) url(#ca); }
+/* Qualia gallery: colour comes back on hover. main.js puts a colour copy of each photo under the grayscale one
+   and the grayscale one fades out (plain opacity: a mix-blend-mode "saturation" layer failed on composited images) */
 .gal.hue .frame { position: relative; }
-.img.hue, .gal.hue .frame { isolation: isolate; }
-.img.hue::after, .gal.hue .frame::after { content: ""; position: absolute; inset: 0; background: #808080; mix-blend-mode: saturation; pointer-events: none; transition: opacity .9s ease; }
-.card:focus-visible .hue::after { opacity: 0; }
-@media (hover: hover) { .card:hover .hue::after, .gal.hue .frame:hover::after { opacity: 0; } }
+.gal.hue .frame img { position: absolute; inset: 0; }
+.gal.hue .frame img.col { filter: contrast(1.06) url(#ca); }
+.gal.hue .frame img.ph:not(.col) { transition: opacity .9s ease, scale 1.4s var(--ease); }
+@media (hover: hover) { .gal.hue .frame:hover img.ph:not(.col) { opacity: 0; } }
 
 /* Inbox letters: a loose pile, each sheet turned up to ±10°, lower sheets lie on top (positions from main.js).
    It slides up over the end of the gallery and is cut off flat at the bottom, on the line above Next. */

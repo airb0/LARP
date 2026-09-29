@@ -237,8 +237,8 @@ details[open]::details-content { block-size: auto; }
 .show .gal .drop img { width: 100%; height: 100%; object-fit: cover; }
 @media (min-width: 900px) { .show .gal .drop { width: 17%; } }
 
-/* Gallery photos open in the viewer */
-.show .gal .frame, .show .gal .drop { cursor: zoom-in; }
+/* Gallery photos (and Inbox letters) open in the viewer */
+.show .gal .frame, .show .gal .drop, .letters img { cursor: zoom-in; }
 .show .gal .frame:focus-visible, .show .gal .drop:focus-visible { outline-offset: -3px; }
 
 /* ---------- Photo viewer ---------- */

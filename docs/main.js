@@ -188,15 +188,18 @@
   });
 
   // ---------- Photo viewer: click a gallery photo, page through that show's photos ----------
+  // In Inbox the letters of the pile follow the photos (only the sheets on show, not the spare hidden ones).
   const lb = document.getElementById('lb');
   const lbImg = lb.querySelector('img');
   const lbCount = lb.querySelector('.count');
   let lbItems = [], lbAt = 0, lbFrom = null, lbShow = null;
   // The viewer always shows the largest copy in the photo's srcset, not the small one the gallery cell picked
+  const pic = (el) => (el.tagName === 'IMG' ? el : el.querySelector('img')); // a letter is the img itself
+  const VIEWABLE = '.gal .frame, .gal .drop, .letters img:not([hidden])';
   const largest = (img) => (img.srcset ? img.srcset.split(',').pop().trim().split(' ')[0] : img.src);
   const lbSet = (i) => {
     lbAt = (i + lbItems.length) % lbItems.length;
-    const src = lbItems[lbAt].querySelector('img');
+    const src = pic(lbItems[lbAt]);
     const url = largest(src);
     lbImg.classList.add('fade');
     const next = new Image();
@@ -207,14 +210,13 @@
     };
     next.src = url;
     lbCount.textContent = `${lbAt + 1} / ${lbItems.length}`;
-    [lbAt - 1, lbAt + 1].forEach((k) => { new Image().src = largest(lbItems[(k + lbItems.length) % lbItems.length].querySelector('img')); });
+    [lbAt - 1, lbAt + 1].forEach((k) => { new Image().src = largest(pic(lbItems[(k + lbItems.length) % lbItems.length])); });
   };
   const lbOpen = (item) => {
-    const gal = item.closest('.gal');
-    lbItems = [...gal.querySelectorAll('.frame, .drop')];
-    lbFrom = item;
     lbShow = item.closest('article.show');
-    lb.classList.toggle('color', gal.classList.contains('hue'));
+    lbItems = [...lbShow.querySelectorAll(VIEWABLE)];
+    lbFrom = item;
+    lb.classList.toggle('color', !!lbShow.querySelector('.gal.hue'));
     lbImg.removeAttribute('src');
     lbSet(lbItems.indexOf(item));
     lb.classList.add('open');
@@ -229,10 +231,10 @@
     if (lbFrom) lbFrom.focus({ preventScroll: true });
   };
   const lbIsOpen = () => lb.classList.contains('open');
-  document.querySelectorAll('.show .gal .frame, .show .gal .drop').forEach((item) => {
+  document.querySelectorAll('.show .gal .frame, .show .gal .drop, .show .letters img').forEach((item) => {
     item.tabIndex = 0;
     item.setAttribute('role', 'button');
-    item.setAttribute('aria-label', 'Open photo: ' + item.querySelector('img').alt);
+    item.setAttribute('aria-label', 'Open photo: ' + pic(item).alt);
     item.addEventListener('click', () => lbOpen(item));
     item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lbOpen(item); } });
   });
